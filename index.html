@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="AiOpsOPS 智能运维平台，统一管理多云与私有化基础设施、Kubernetes 集群、中间件与 CI/CD 发布流水线，提供智能巡检和自动处置能力。" />
+  <meta name="description" content="AiOps 智能运维平台，统一管理多云与私有化基础设施、Kubernetes 集群、中间件与 CI/CD 发布流水线，提供智能巡检和自动处置能力。" />
   <meta name="theme-color" content="#070b12" />
+  <meta name="aiops-github-owner" content="macrolai" />
+  <meta name="aiops-github-repo" content="aiops" />
+  <meta name="aiops-reservation-endpoint" content="https://aiops-reservation.macro-aiops.workers.dev/api/reservation" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23070b12'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2349e6cf'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%234f85ff' stroke-width='1.5'/%3E%3C/svg%3E" />
-  <title>AiOpsOPS · 智能运维与 CI/CD 平台</title>
+  <title>AiOps · 智能运维与 CI/CD 平台</title>
   <style>
 /* =========================================================
-   AiOpsOPS — AIOps product landing page
+   AiOps product landing page
    ========================================================= */
 :root {
   --bg: #070a10;
@@ -4472,6 +4475,10 @@ ul {
   font-weight: 500;
 }
 
+.form-success p a {
+  color: #49e6cf;
+}
+
 .form-success p {
   max-width: 330px;
   margin-top: 11px;
@@ -5745,6 +5752,43 @@ ul {
   .delivery-target-card .delivery-health { grid-column: auto; }
 }
 
+
+.success-actions {
+  display: flex;
+  gap: 9px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.success-actions b { color: #c9d7e5; }
+.form-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 45px;
+  text-align: center;
+}
+.form-fallback[hidden] { display: none; }
+.fallback-mark {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border: 1px solid rgba(255,157,98,.2);
+  border-radius: 50%;
+  background: rgba(255,157,98,.07);
+  color: #ffad72;
+  font-family: var(--mono);
+  font-size: 23px;
+}
+.form-fallback h3 { margin-top: 19px; color: #d6e2ed; font-size: 20px; font-weight: 500; }
+.form-fallback > p { max-width: 360px; margin-top: 10px; color: #6a788c; font-size: 11px; line-height: 1.8; }
+.form-fallback > p a { color: #49e6cf; }
+.fallback-actions { display: flex; gap: 9px; margin-top: 22px; flex-wrap: wrap; justify-content: center; }
+.form-fallback-back { margin-top: 18px; border: 0; background: transparent; color: #68798d; font-size: 9px; cursor: pointer; }
+.form-fallback-back:hover { color: #b8c8da; }
+.demo-form button[type="submit"]:disabled { opacity: .72; cursor: wait; }
   </style>
 </head>
 <body>
@@ -5756,12 +5800,12 @@ ul {
 
   <header class="site-header" id="siteHeader">
     <div class="container nav-shell">
-      <a class="brand" href="#" aria-label="AiOpsOPS 首页">
+      <a class="brand" href="#" aria-label="AiOps 首页">
         <span class="brand-mark" aria-hidden="true">
           <span class="brand-core"></span>
           <span class="brand-orbit"></span>
         </span>
-        <span class="brand-word">AiOpsOPS</span>
+        <span class="brand-word">AiOps</span>
       </a>
 
       <nav class="desktop-nav" aria-label="主导航">
@@ -5834,14 +5878,14 @@ ul {
           </ul>
         </div>
 
-        <div class="hero-product reveal" aria-label="AiOpsOPS 智能运维驾驶舱预览">
+        <div class="hero-product reveal" aria-label="AiOps 智能运维驾驶舱预览">
           <div class="product-glow" aria-hidden="true"></div>
           <div class="dashboard">
             <div class="dash-topbar">
               <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
               <div class="dash-title">
                 <span class="dash-logo"><i></i></span>
-                AiOpsOPS Console
+                AiOps Console
               </div>
               <div class="dash-live"><span></span>LIVE</div>
             </div>
@@ -5921,7 +5965,7 @@ ul {
                       <span class="core-glow"></span>
                       <div class="core-content">
                         <svg viewBox="0 0 26 26"><path d="M8 8h10v10H8z"/><path d="M13 2v4M13 20v4M2 13h4M20 13h4M5.2 5.2l2.8 2.8M18 18l2.8 2.8M20.8 5.2 18 8M8 18l-2.8 2.8"/></svg>
-                        <strong>AiOpsOPS AI</strong>
+                        <strong>AiOps AI</strong>
                         <small>实时分析中</small>
                       </div>
                     </div>
@@ -6234,11 +6278,11 @@ ul {
         <div class="terminal-window">
           <div class="terminal-bar">
             <div class="window-dots"><span></span><span></span><span></span></div>
-            <span>nexops-cli — cluster deploy</span>
+            <span>aiops-cli — cluster deploy</span>
             <span class="terminal-badge">AUTOMATED</span>
           </div>
           <div class="terminal-body">
-            <div class="term-line muted"><span>$</span> nexops cluster create --env prod</div>
+            <div class="term-line muted"><span>$</span> aiops cluster create --env prod</div>
             <div class="term-line success"><span>✓</span> 前置检查通过 <em>6/6</em></div>
             <div class="term-line success"><span>✓</span> 节点初始化完成 <em>12 nodes</em></div>
             <div class="term-line success"><span>✓</span> 控制平面部署完成 <em>HA</em></div>
@@ -6280,7 +6324,7 @@ ul {
           <div class="delivery-console reveal" id="deliveryConsole">
             <div class="delivery-console-head">
               <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-              <span>AiOpsOPS Delivery</span>
+              <span>AiOps Delivery</span>
               <em id="deliveryRunStatus">RUNNING</em>
             </div>
             <div class="delivery-console-body">
@@ -6568,7 +6612,7 @@ ul {
             <div class="arch-core-card">
               <span class="arch-core-glow"></span>
               <div class="arch-core-mark"><i></i></div>
-              <strong>AiOpsOPS Intelligence Core</strong>
+              <strong>AiOps Intelligence Core</strong>
               <p>统一数据模型 · CMDB · 智能分析 · 策略引擎</p>
               <div class="arch-pills"><span>资产图谱</span><span>CI/CD 编排</span><span>AI 诊断</span><span>自动化</span></div>
             </div>
@@ -6598,12 +6642,12 @@ ul {
           <div class="cta-orb cta-orb-a" aria-hidden="true"></div>
           <div class="cta-orb cta-orb-b" aria-hidden="true"></div>
           <div class="cta-content">
-            <span class="eyebrow light">AiOpsT INCIDENT, AUTO-RESOLVED</span>
+            <span class="eyebrow light">NEXT INCIDENT, AUTO-RESOLVED</span>
             <h2>让下一次故障，<br />自己恢复。</h2>
-            <p>把复杂留给我们，把稳定交给业务。用 AiOpsOPS 连接资产、Kubernetes、中间件与 CI/CD 发布。</p>
+            <p>把复杂留给我们，把稳定交给业务。用 AiOps 连接资产、Kubernetes、中间件与 CI/CD 发布。</p>
             <div class="cta-actions">
               <button class="button button-light button-lg js-open-demo" type="button">预约产品演示 <span>→</span></button>
-              <a class="button button-outline-light button-lg" href="mailto:hello@nexops.example">联系解决方案顾问</a>
+              <button class="button button-outline-light button-lg js-open-demo" type="button">联系解决方案顾问</button>
             </div>
             <small>支持私有化部署 · 提供 POC 验证 · 专业团队陪跑上线</small>
           </div>
@@ -6624,20 +6668,20 @@ ul {
   <footer class="site-footer">
     <div class="container footer-main">
       <div class="footer-brand">
-        <a class="brand" href="#" aria-label="AiOpsOPS 首页">
+        <a class="brand" href="#" aria-label="AiOps 首页">
           <span class="brand-mark" aria-hidden="true"><span class="brand-core"></span><span class="brand-orbit"></span></span>
-          <span class="brand-word">AiOpsOPS</span>
+          <span class="brand-word">AiOps</span>
         </a>
         <p>面向复杂基础设施的智能运维平台。<br />连接、洞察、行动，让系统持续稳定运行。</p>
       </div>
       <div class="footer-links">
         <div><strong>产品</strong><a href="#cmdb">统一 CMDB</a><a href="#kubernetes">Kubernetes</a><a href="#middleware">中间件部署</a><a href="#delivery">CI/CD 发布</a></div>
         <div><strong>能力</strong><a href="#delivery">持续交付</a><a href="#automation">自动处置</a><a href="#architecture">平台架构</a><a href="#capabilities">产品概览</a></div>
-        <div><strong>联系</strong><a href="mailto:hello@nexops.example">商务咨询</a><a href="mailto:support@nexops.example">技术支持</a><a href="#main">返回顶部</a></div>
+        <div><strong>联系</strong><a href="mailto:macro_lai@163.com">商务咨询</a><a href="mailto:macro_lai@163.com">技术支持</a><a href="#main">返回顶部</a></div>
       </div>
     </div>
     <div class="container footer-bottom">
-      <span>© 2026 AiOpsOPS. All rights reserved.</span>
+      <span>© 2026 AiOps. All rights reserved.</span>
       <span>隐私政策 · 服务条款 · 安全合规</span>
     </div>
   </footer>
@@ -6649,7 +6693,7 @@ ul {
       </button>
       <div class="dialog-aside">
         <span class="eyebrow light">GET A DEMO</span>
-        <h2>看看 AiOpsOPS<br />如何改变你的运维。</h2>
+        <h2>看看 AiOps<br />如何改变你的运维。</h2>
         <p>30 分钟产品演示，结合你的基础设施场景，给出可落地的智能运维路径。</p>
         <ul><li>统一资产与多云纳管演示</li><li>Kubernetes 与中间件治理</li><li>CI/CD 发布与运行回调</li><li>AI 巡检与自动处置闭环</li></ul>
       </div>
@@ -6674,13 +6718,27 @@ ul {
           </select>
         </label>
         <button class="button button-primary" type="submit">提交预约 <span>→</span></button>
-        <small>提交即表示同意我们仅将信息用于本次产品沟通。</small>
+        <small id="reservationModeHint">提交后将直接创建 GitHub Issue，由 Actions 自动发送邮件并脱敏关闭。</small>
       </form>
       <div class="form-success" id="formSuccess" hidden>
         <span class="success-mark">✓</span>
-        <h3>预约已收到</h3>
-        <p>感谢关注 AiOpsOPS。解决方案顾问将在 1 个工作日内与你联系。</p>
-        <button class="button button-primary dialog-close-success" type="button">完成</button>
+        <h3 id="formSuccessTitle">预约已提交</h3>
+        <p id="formSuccessMessage">预约信息已创建，Actions 正在发送邮件至 <a href="mailto:macro_lai@163.com">macro_lai@163.com</a>。</p>
+        <div class="success-actions">
+          <a class="button button-primary" id="githubIssueSuccessLink" href="https://github.com/macrolai/aiops/issues/new" target="_blank" rel="noopener noreferrer">查看 GitHub Issue</a>
+          <button class="button button-ghost dialog-close-success" type="button">完成</button>
+        </div>
+      </div>
+      <div class="form-fallback" id="formFallback" hidden>
+        <span class="fallback-mark">!</span>
+        <h3 id="formFallbackTitle">暂时无法直接提交</h3>
+        <p id="formFallbackMessage">可以打开 GitHub 预约页面手动创建 Issue，或复制预约内容发送至 <a href="mailto:macro_lai@163.com">macro_lai@163.com</a>。</p>
+        <div class="fallback-actions">
+          <a class="button button-primary" id="githubIssueFallback" href="https://github.com/macrolai/aiops/issues/new" target="_blank" rel="noopener noreferrer">打开 GitHub 预约页面</a>
+          <button class="button button-ghost" id="copyReservation" type="button">复制预约内容</button>
+          <a class="button button-ghost" id="mailtoFallback" href="mailto:macro_lai@163.com">用邮件发送</a>
+        </div>
+        <button class="form-fallback-back" id="retryReservation" type="button">返回修改</button>
       </div>
     </div>
   </dialog>
@@ -6922,6 +6980,8 @@ ul {
       demoForm.hidden = false;
       demoForm.reset();
       if (formSuccess) formSuccess.hidden = true;
+      const fallback = document.getElementById('formFallback');
+      if (fallback) fallback.hidden = true;
     }
     if (typeof dialog.showModal === 'function') {
       dialog.showModal();
@@ -6958,11 +7018,172 @@ ul {
     document.body.style.overflow = '';
   });
 
-  demoForm?.addEventListener('submit', (event) => {
+  const formFallback = document.getElementById('formFallback');
+  const copyReservation = document.getElementById('copyReservation');
+  const mailtoFallback = document.getElementById('mailtoFallback');
+  const retryReservation = document.getElementById('retryReservation');
+  const githubIssueSuccessLink = document.getElementById('githubIssueSuccessLink');
+  const githubIssueFallback = document.getElementById('githubIssueFallback');
+  const githubOwner = (document.querySelector('meta[name="aiops-github-owner"]')?.content || '').trim() || 'macrolai';
+  const githubRepo = (document.querySelector('meta[name="aiops-github-repo"]')?.content || '').trim() || 'aiops';
+  const reservationEndpoint = (document.querySelector('meta[name="aiops-reservation-endpoint"]')?.content || '').trim();
+  const reservationModeHint = document.getElementById('reservationModeHint');
+  const formSuccessTitle = document.getElementById('formSuccessTitle');
+  const formSuccessMessage = document.getElementById('formSuccessMessage');
+  const formFallbackTitle = document.getElementById('formFallbackTitle');
+  const formFallbackMessage = document.getElementById('formFallbackMessage');
+  let lastReservationText = '';
+  let lastReservationMailto = 'mailto:macro_lai@163.com';
+  if (reservationModeHint && !reservationEndpoint) {
+    reservationModeHint.textContent = '提交后将打开 GitHub 预约页面；创建 Issue 后，GitHub Actions 会自动发送邮件并脱敏关闭。';
+  }
+
+  const encodeBase64Utf8 = (value) => {
+    const bytes = new TextEncoder().encode(value);
+    let binary = '';
+    bytes.forEach((byte) => { binary += String.fromCharCode(byte); });
+    return btoa(binary);
+  };
+
+  const makeReservation = (data) => {
+    const submittedAt = new Intl.DateTimeFormat('zh-CN', {
+      timeZone: 'Asia/Shanghai',
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', hour12: false
+    }).format(new Date());
+    const subject = `[AiOps 预约] ${data.company || ''} - ${data.name || ''}`;
+    const readableBody = [
+      '### AiOps 产品演示预约',
+      '',
+      `- **姓名**：${data.name || ''}`,
+      `- **企业邮箱**：${data.email || ''}`,
+      `- **公司**：${data.company || ''}`,
+      `- **联系电话**：${data.phone || ''}`,
+      `- **当前关注**：${data.interest || ''}`,
+      `- **提交时间**：${submittedAt}`,
+      '',
+      '> 此 Issue 创建后，AiOps GitHub Actions 会自动发送邮件并脱敏关闭。'
+    ].join('\n');
+    const markerData = {
+      ...data,
+      submitted_at: new Date().toISOString(),
+      submitted_at_text: submittedAt,
+      source: 'AiOps 产品介绍页'
+    };
+    const body = `${readableBody}\n\n<!-- AIOPS_RESERVATION_DATA:${encodeBase64Utf8(JSON.stringify(markerData))} -->`;
+    const issueUrl = `https://github.com/${encodeURIComponent(githubOwner)}/${encodeURIComponent(githubRepo)}/issues/new?title=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    return {
+      subject,
+      body,
+      issueUrl,
+      copyText: `收件人：macro_lai@163.com\n主题：${subject}\n\n${readableBody}`,
+      mailto: `mailto:macro_lai@163.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(readableBody)}`
+    };
+  };
+
+  const copyText = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        textarea.remove();
+      }
+      if (copyReservation) copyReservation.textContent = '已复制';
+      window.setTimeout(() => { if (copyReservation) copyReservation.textContent = '复制预约内容'; }, 1600);
+    } catch (_) {
+      window.prompt('请复制以下预约内容：', text);
+    }
+  };
+
+  copyReservation?.addEventListener('click', () => copyText(lastReservationText));
+  retryReservation?.addEventListener('click', () => {
+    if (formFallback) formFallback.hidden = true;
+    demoForm.hidden = false;
+    demoForm.querySelector('button[type="submit"]')?.focus();
+  });
+
+  demoForm?.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!demoForm.reportValidity()) return;
+    const data = Object.fromEntries(new FormData(demoForm).entries());
+    const reservation = makeReservation(data);
+    lastReservationText = reservation.copyText;
+    lastReservationMailto = reservation.mailto;
+    if (mailtoFallback) mailtoFallback.href = reservation.mailto;
+    if (githubIssueSuccessLink) githubIssueSuccessLink.href = reservation.issueUrl;
+    if (githubIssueFallback) githubIssueFallback.href = reservation.issueUrl;
+
+    // Preferred path: the Worker creates the issue directly, so visitors do
+    // not need a GitHub account or any manual confirmation.
+    if (reservationEndpoint) {
+      const submitButton = demoForm.querySelector('button[type="submit"]');
+      const originalText = submitButton?.innerHTML;
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.innerHTML = '正在提交…';
+      }
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 15000);
+      try {
+        const response = await fetch(reservationEndpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data),
+          signal: controller.signal
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || !result.ok) throw new Error(result.error || `HTTP ${response.status}`);
+        demoForm.hidden = true;
+        if (formFallback) formFallback.hidden = true;
+        if (formSuccess) formSuccess.hidden = false;
+        if (formSuccessTitle) formSuccessTitle.textContent = '预约已提交';
+        if (formSuccessMessage) formSuccessMessage.textContent = `预约已创建（Issue #${result.issue_number}），GitHub Actions 正在发送邮件至 macro_lai@163.com。`;
+        if (githubIssueSuccessLink && result.issue_url) {
+          githubIssueSuccessLink.href = result.issue_url;
+          githubIssueSuccessLink.hidden = false;
+        }
+      } catch (error) {
+        demoForm.hidden = true;
+        if (formSuccess) formSuccess.hidden = true;
+        if (formFallback) formFallback.hidden = false;
+        if (formFallbackTitle) formFallbackTitle.textContent = '在线提交暂时失败';
+        if (formFallbackMessage) formFallbackMessage.textContent = '可以直接打开 GitHub 预约页面手动创建 Issue，或复制预约内容发送至 macro_lai@163.com。';
+      } finally {
+        window.clearTimeout(timeout);
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.innerHTML = originalText || '提交预约 <span>→</span>';
+        }
+      }
+      return;
+    }
+
+    // No Worker configured: preserve the dependency-free GitHub page fallback.
+    let opened = false;
+    try {
+      const issueWindow = window.open(reservation.issueUrl, '_blank');
+      if (issueWindow) {
+        issueWindow.opener = null;
+        opened = true;
+      }
+    } catch (_) {}
     demoForm.hidden = true;
-    if (formSuccess) formSuccess.hidden = false;
+    if (formSuccess) formSuccess.hidden = !opened;
+    if (formFallback) formFallback.hidden = opened;
+    if (opened) {
+      if (formSuccessTitle) formSuccessTitle.textContent = 'GitHub 预约页面已打开';
+      if (formSuccessMessage) formSuccessMessage.textContent = '请在新窗口登录 GitHub 并点击 Create。Issue 创建后，Actions 会自动发送邮件并脱敏关闭。';
+      if (githubIssueSuccessLink) githubIssueSuccessLink.textContent = '重新打开预约页面';
+    } else if (formFallbackTitle) {
+      formFallbackTitle.textContent = '浏览器阻止了 GitHub 页面';
+    }
   });
 
   // Re-open the initial form if the dialog is opened after a successful submit.
