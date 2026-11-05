@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NEXOPS 智能运维平台，统一管理多云与私有化基础设施、Kubernetes 集群和关键中间件，提供智能巡检与简单问题自动处理能力。" />
+  <meta name="theme-color" content="#070b12" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23070b12'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2349e6cf'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%234f85ff' stroke-width='1.5'/%3E%3C/svg%3E" />
+  <title>NEXOPS · 智能运维平台</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">跳转到主要内容</a>
+  <div class="page-noise" aria-hidden="true"></div>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-shell">
+      <a class="brand" href="#" aria-label="NEXOPS 首页">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-core"></span>
+          <span class="brand-orbit"></span>
+        </span>
+        <span class="brand-word">NEXOPS</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="主导航">
+        <a href="#capabilities">产品能力</a>
+        <a href="#cmdb">资产治理</a>
+        <a href="#kubernetes">Kubernetes</a>
+        <a href="#middleware">中间件</a>
+        <a href="#architecture">平台架构</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="text-link nav-doc" href="#architecture">了解架构</a>
+        <button class="button button-sm button-primary js-open-demo" type="button">
+          预约演示
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8h9M8.5 4l4 4-4 4"/></svg>
+        </button>
+        <button class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false" aria-controls="mobileNav">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <nav aria-label="移动端导航">
+        <a href="#capabilities">产品能力</a>
+        <a href="#cmdb">资产治理</a>
+        <a href="#kubernetes">Kubernetes</a>
+        <a href="#middleware">中间件</a>
+        <a href="#inspection">智能巡检</a>
+        <a href="#architecture">平台架构</a>
+      </nav>
+      <button class="button button-primary js-open-demo" type="button">预约产品演示</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow hero-eyebrow">
+            <span class="eyebrow-pulse"></span>
+            Agentic AIOps · 从感知到自愈
+          </div>
+          <h1>
+            让复杂基础设施<br />
+            <span class="text-gradient">自主运行。</span>
+          </h1>
+          <p class="hero-lede">
+            一站式纳管多云与私有化资源、Kubernetes 集群和关键中间件。以智能巡检发现风险，以自动化处置闭环故障。
+          </p>
+          <div class="hero-actions">
+            <button class="button button-primary button-lg js-open-demo" type="button">
+              开始智能运维
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8h9M8.5 4l4 4-4 4"/></svg>
+            </button>
+            <a class="button button-ghost button-lg" href="#capabilities">
+              <span class="play-icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12"><path d="m4 2.8 5 3.2-5 3.2V2.8Z"/></svg>
+              </span>
+              探索平台能力
+            </a>
+          </div>
+          <ul class="hero-points" aria-label="平台核心特性">
+            <li><span class="check-dot"></span>多云 / 私有化</li>
+            <li><span class="check-dot"></span>分钟级接入</li>
+            <li><span class="check-dot"></span>安全可审计</li>
+          </ul>
+        </div>
+
+        <div class="hero-product reveal" aria-label="NEXOPS 智能运维驾驶舱预览">
+          <div class="product-glow" aria-hidden="true"></div>
+          <div class="dashboard">
+            <div class="dash-topbar">
+              <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="dash-title">
+                <span class="dash-logo"><i></i></span>
+                NEXOPS Console
+              </div>
+              <div class="dash-live"><span></span>LIVE</div>
+            </div>
+
+            <div class="dash-layout">
+              <aside class="dash-sidebar" aria-hidden="true">
+                <div class="sidebar-icon active"><svg viewBox="0 0 20 20"><path d="M3 3h5v5H3zM12 3h5v5h-5zM3 12h5v5H3zM12 12h5v5h-5z"/></svg></div>
+                <div class="sidebar-icon"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 2"/></svg></div>
+                <div class="sidebar-icon"><svg viewBox="0 0 20 20"><path d="M3 15V8l7-4 7 4v7l-7 3-7-3Z"/><path d="m3 8 7 4 7-4M10 12v6"/></svg></div>
+                <div class="sidebar-icon"><svg viewBox="0 0 20 20"><path d="M10 2 3 6v8l7 4 7-4V6l-7-4Z"/><path d="M7 10h6M10 7v6"/></svg></div>
+                <div class="sidebar-spacer"></div>
+                <div class="sidebar-avatar">K</div>
+              </aside>
+
+              <div class="dash-main">
+                <div class="dash-heading">
+                  <div>
+                    <span class="dash-kicker">全局态势</span>
+                    <h2>生产环境 <span class="chevron">⌄</span></h2>
+                  </div>
+                  <div class="dash-tools">
+                    <span class="dash-search"><svg viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg>搜索资源</span>
+                    <span class="dash-avatar">YL</span>
+                  </div>
+                </div>
+
+                <div class="topology-card">
+                  <div class="topology-meta">
+                    <span>实时资源拓扑</span>
+                    <span class="topology-health"><i></i>12,840 个资源健康</span>
+                  </div>
+                  <div class="topology-canvas">
+                    <svg class="topology-lines" viewBox="0 0 620 255" preserveAspectRatio="none" aria-hidden="true">
+                      <defs>
+                        <linearGradient id="lineGradient" x1="0" x2="1">
+                          <stop offset="0" stop-color="#2f7df6" stop-opacity=".15"/>
+                          <stop offset=".5" stop-color="#55d7ff" stop-opacity=".7"/>
+                          <stop offset="1" stop-color="#2f7df6" stop-opacity=".15"/>
+                        </linearGradient>
+                        <filter id="lineGlow"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                      </defs>
+                      <path d="M78 60 C150 82 190 100 268 128" />
+                      <path d="M536 55 C460 75 414 98 353 126" />
+                      <path d="M72 205 C155 182 203 167 269 142" />
+                      <path d="M548 195 C457 188 408 170 354 143" />
+                      <path d="M305 78 C307 90 308 105 310 120" />
+                      <path d="M310 158 C310 176 310 190 310 211" />
+                      <circle cx="174" cy="93" r="2.6" class="travel-dot"><animateMotion dur="3.8s" repeatCount="indefinite" path="M78 60 C150 82 190 100 268 128"/></circle>
+                      <circle cx="441" cy="92" r="2.6" class="travel-dot"><animateMotion dur="4.4s" repeatCount="indefinite" path="M536 55 C460 75 414 98 353 126"/></circle>
+                      <circle cx="169" cy="176" r="2.6" class="travel-dot"><animateMotion dur="4s" repeatCount="indefinite" path="M72 205 C155 182 203 167 269 142"/></circle>
+                    </svg>
+
+                    <div class="cloud-node node-a">
+                      <span class="node-icon cloud-blue"><svg viewBox="0 0 20 20"><path d="M5.5 15.5h9a3 3 0 0 0 .5-5.95A5 5 0 0 0 5.4 8.7a3.4 3.4 0 0 0 .1 6.8Z"/></svg></span>
+                      <div><strong>阿里云</strong><small>华东 · 3 集群</small></div>
+                      <i class="status-dot"></i>
+                    </div>
+                    <div class="cloud-node node-b">
+                      <span class="node-icon cloud-orange"><svg viewBox="0 0 20 20"><path d="M5.5 15.5h9a3 3 0 0 0 .5-5.95A5 5 0 0 0 5.4 8.7a3.4 3.4 0 0 0 .1 6.8Z"/></svg></span>
+                      <div><strong>AWS</strong><small>东京 · 2 集群</small></div>
+                      <i class="status-dot"></i>
+                    </div>
+                    <div class="cloud-node node-c">
+                      <span class="node-icon cloud-green"><svg viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="4" rx="1"/><rect x="3" y="12" width="14" height="4" rx="1"/><path d="M6 6h.01M6 14h.01"/></svg></span>
+                      <div><strong>私有云</strong><small>IDC-01 · 168 节点</small></div>
+                      <i class="status-dot"></i>
+                    </div>
+                    <div class="cloud-node node-d">
+                      <span class="node-icon cloud-cyan"><svg viewBox="0 0 20 20"><path d="m10 2 6.5 3.7v8.6L10 18l-6.5-3.7V5.7L10 2Z"/><path d="m3.5 5.7 6.5 3.8 6.5-3.8M10 9.5V18"/></svg></span>
+                      <div><strong>K8s 生产集群</strong><small>48 nodes · Healthy</small></div>
+                      <i class="status-dot"></i>
+                    </div>
+
+                    <div class="ai-core">
+                      <span class="core-ring ring-one"></span>
+                      <span class="core-ring ring-two"></span>
+                      <span class="core-glow"></span>
+                      <div class="core-content">
+                        <svg viewBox="0 0 26 26"><path d="M8 8h10v10H8z"/><path d="M13 2v4M13 20v4M2 13h4M20 13h4M5.2 5.2l2.8 2.8M18 18l2.8 2.8M20.8 5.2 18 8M8 18l-2.8 2.8"/></svg>
+                        <strong>NEXOPS AI</strong>
+                        <small>实时分析中</small>
+                      </div>
+                    </div>
+
+                    <div class="mini-node mini-a"><span class="mini-dot green"></span>MySQL</div>
+                    <div class="mini-node mini-b"><span class="mini-dot green"></span>Redis</div>
+                    <div class="mini-node mini-c"><span class="mini-dot orange"></span>Nacos</div>
+                  </div>
+                </div>
+
+                <div class="dash-bottom">
+                  <div class="metric-card">
+                    <span class="metric-label">系统健康度</span>
+                    <div class="metric-value"><strong data-count="98.6" data-decimals="1">0</strong><small>%</small></div>
+                    <span class="metric-trend positive">↗ 0.8%</span>
+                    <div class="sparkline" aria-hidden="true"><svg viewBox="0 0 84 26"><path class="spark-fill" d="M1 21L12 18L23 20L34 12L45 14L56 8L67 10L83 4V26H1Z"/><path d="M1 21L12 18L23 20L34 12L45 14L56 8L67 10L83 4"/></svg></div>
+                  </div>
+                  <div class="metric-card">
+                    <span class="metric-label">在线资产</span>
+                    <div class="metric-value"><strong data-count="12840" data-decimals="0">0</strong><small>个</small></div>
+                    <span class="metric-trend positive">↗ 126 本周</span>
+                    <div class="bar-chart" aria-hidden="true"><i style="--h:35%"></i><i style="--h:52%"></i><i style="--h:43%"></i><i style="--h:69%"></i><i style="--h:58%"></i><i style="--h:82%"></i><i style="--h:74%"></i><i style="--h:94%"></i></div>
+                  </div>
+                  <div class="metric-card ai-metric">
+                    <span class="metric-label">今日自动处置</span>
+                    <div class="metric-value"><strong data-count="1286" data-decimals="0">0</strong><small>次</small></div>
+                    <span class="metric-trend positive">99.2% 成功率</span>
+                    <div class="orbit-mini" aria-hidden="true"><span></span><span></span><i></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-insight-card">
+            <div class="insight-head">
+              <span class="insight-icon"><svg viewBox="0 0 18 18"><path d="m9 1.8 1.6 4.4 4.4 1.6-4.4 1.6L9 13.8 7.4 9.4 3 7.8l4.4-1.6L9 1.8Z"/></svg></span>
+              <span>AI 洞察</span>
+              <time>刚刚</time>
+            </div>
+            <strong>已提前发现 Redis 内存风险</strong>
+            <p>建议扩容至 16 GB，预计可消除 72% 的缓存击穿风险。</p>
+            <div class="insight-action"><span class="auto-pill">可自动执行</span><span>查看方案 →</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="connector-strip" aria-label="统一接入的基础设施类型">
+      <div class="container connector-inner">
+        <span class="connector-label">统一连接每一层基础设施</span>
+        <div class="connector-items">
+          <span><i class="connector-dot"></i>公有云</span>
+          <span><i class="connector-dot"></i>私有云</span>
+          <span><i class="connector-dot"></i>Kubernetes</span>
+          <span><i class="connector-dot"></i>主机</span>
+          <span><i class="connector-dot"></i>数据库</span>
+          <span><i class="connector-dot"></i>中间件</span>
+        </div>
+        <span class="connector-more">20+ 接入类型</span>
+      </div>
+    </section>
+
+    <section class="section capabilities" id="capabilities">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow">ONE PLATFORM, FULL LIFECYCLE</span>
+            <h2>一个平台，<br />管好每一层基础设施</h2>
+          </div>
+          <p>从资产发现到故障自愈，打破工具孤岛。让运维团队从重复操作中解放出来，把时间留给真正重要的系统建设。</p>
+        </div>
+
+        <div class="bento-grid">
+          <article class="cap-card cap-cmdb reveal">
+            <div class="cap-copy">
+              <span class="cap-index">01 / UNIFIED CMDB</span>
+              <div class="cap-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M12 7.5v4M6.2 15.8l4.4-3.2M17.8 15.8l-4.4-3.2"/><circle cx="12" cy="12" r="1.4"/></svg></div>
+              <h3>统一 CMDB 资产底座</h3>
+              <p>自动发现多云、私有化与本地资源，建立业务、应用、主机、中间件之间的动态关系图谱。</p>
+              <a class="arrow-link" href="#cmdb">探索资产治理 <span>→</span></a>
+            </div>
+            <div class="cap-visual cmdb-visual" aria-hidden="true">
+              <div class="visual-toolbar"><span></span><span></span><span></span><small>resource-map</small></div>
+              <div class="resource-tree">
+                <div class="tree-row level-0"><i class="tree-icon blue"></i><span>业务域 / 电商交易</span><b>248</b></div>
+                <div class="tree-line"></div>
+                <div class="tree-row level-1"><i class="tree-icon cyan"></i><span>生产环境</span><b>168</b></div>
+                <div class="tree-row level-2"><i class="tree-icon green"></i><span>订单服务</span><em>Healthy</em></div>
+                <div class="tree-row level-2 active"><i class="tree-icon orange"></i><span>支付网关</span><em>Observing</em></div>
+                <div class="tree-row level-2"><i class="tree-icon blue"></i><span>库存服务</span><em>Healthy</em></div>
+              </div>
+              <div class="asset-float"><small>自动发现</small><strong>+ 1,284</strong><span>近 24 小时</span></div>
+            </div>
+          </article>
+
+          <article class="cap-card cap-k8s reveal">
+            <span class="cap-index">02 / KUBERNETES</span>
+            <div class="cap-icon"><svg viewBox="0 0 24 24"><path d="m12 2.8 8 4.6v9.2L12 21.2 4 16.6V7.4l8-4.6Z"/><path d="m4 7.4 8 4.7 8-4.7M12 12.1v9.1"/><circle cx="12" cy="12" r="2.4"/></svg></div>
+            <h3>Kubernetes 全生命周期</h3>
+            <p>集群安装、纳管、扩缩容与升级，在一个视图里掌握所有工作负载。</p>
+            <div class="cluster-visual" aria-hidden="true">
+              <div class="cluster-top"><span class="cluster-pulse"></span><div><strong>prod-shanghai-01</strong><small>v1.30.4</small></div><em>运行中</em></div>
+              <div class="node-grid">
+                <span><i></i>node-01<small>CPU 42%</small></span>
+                <span><i></i>node-02<small>CPU 58%</small></span>
+                <span><i></i>node-03<small>CPU 37%</small></span>
+                <span><i></i>node-04<small>CPU 51%</small></span>
+              </div>
+            </div>
+            <a class="arrow-link" href="#architecture">查看生命周期管理 <span>→</span></a>
+          </article>
+
+          <article class="cap-card cap-middleware reveal">
+            <span class="cap-index">03 / MIDDLEWARE</span>
+            <div class="cap-icon"><svg viewBox="0 0 24 24"><path d="M4 6.5h16M4 12h16M4 17.5h16"/><circle cx="7" cy="6.5" r="1.2"/><circle cx="16" cy="12" r="1.2"/><circle cx="10" cy="17.5" r="1.2"/></svg></div>
+            <h3>中间件一键交付</h3>
+            <p>标准化部署 Nginx、Redis、Nacos、MySQL、RocketMQ、Elasticsearch 等常用组件。</p>
+            <div class="middleware-cloud" aria-label="支持的中间件">
+              <span><i class="mw-nginx">N</i>Nginx</span>
+              <span><i class="mw-redis">R</i>Redis</span>
+              <span><i class="mw-nacos">N</i>Nacos</span>
+              <span><i class="mw-mysql">M</i>MySQL</span>
+              <span><i class="mw-rocket">R</i>RocketMQ</span>
+              <span><i class="mw-es">E</i>Elasticsearch</span>
+              <span><i class="mw-kibana">K</i>Kibana</span>
+            </div>
+            <a class="arrow-link" href="#middleware">浏览组件矩阵 <span>→</span></a>
+          </article>
+
+          <article class="cap-card cap-inspection reveal">
+            <span class="cap-index">04 / INSPECTION</span>
+            <div class="cap-icon"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5M10.5 7v4l2.5 1.5"/></svg></div>
+            <h3>AI 智能巡检</h3>
+            <p>覆盖主机、K8s 与中间件，自动生成风险清单、健康评分与优化建议。</p>
+            <div class="score-visual" aria-hidden="true">
+              <div class="score-ring"><span><strong>96</strong><small>健康分</small></span></div>
+              <div class="score-list">
+                <span><i class="green"></i>主机巡检<em>通过</em></span>
+                <span><i class="blue"></i>K8s 巡检<em>通过</em></span>
+                <span><i class="orange"></i>中间件<em>2 项建议</em></span>
+              </div>
+            </div>
+            <a class="arrow-link" href="#inspection">了解巡检体系 <span>→</span></a>
+          </article>
+
+          <article class="cap-card cap-auto reveal">
+            <span class="cap-index">05 / AUTOMATION</span>
+            <div class="cap-icon"><svg viewBox="0 0 24 24"><path d="M13.2 2.8 5 13h6l-.2 8.2L19 11h-6l.2-8.2Z"/></svg></div>
+            <h3>简单问题自动处理</h3>
+            <p>基于策略与 AI 诊断，自动完成重启、扩容、清理、切换等高频处置动作。</p>
+            <div class="auto-flow" aria-hidden="true">
+              <span>异常触发</span><i>→</i><span>AI 诊断</span><i>→</i><span class="active">自动修复</span>
+            </div>
+            <a class="arrow-link" href="#automation">查看自动处置 <span>→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cmdb-section" id="cmdb">
+      <div class="container split-layout">
+        <div class="split-copy reveal">
+          <span class="eyebrow">UNIFIED CMDB</span>
+          <h2>让每一次变更，<br />都有迹可循。</h2>
+          <p class="section-lede">不是一张静态资产表，而是一张持续更新的基础设施关系网。资源、依赖、变更与告警自动关联，故障影响范围一目了然。</p>
+          <div class="feature-tabs" role="tablist" aria-label="CMDB 能力">
+            <button class="feature-tab active" id="tab-assets" role="tab" aria-selected="true" aria-controls="panel-assets" data-tab="assets" type="button">
+              <span>01</span>统一资产
+            </button>
+            <button class="feature-tab" id="tab-topology" role="tab" aria-selected="false" aria-controls="panel-topology" data-tab="topology" type="button">
+              <span>02</span>关系拓扑
+            </button>
+            <button class="feature-tab" id="tab-changes" role="tab" aria-selected="false" aria-controls="panel-changes" data-tab="changes" type="button">
+              <span>03</span>变更追踪
+            </button>
+          </div>
+
+          <div class="tab-panels">
+            <div class="tab-panel active" id="panel-assets" role="tabpanel" aria-labelledby="tab-assets" data-panel="assets">
+              <h3>全域资产，一屏尽览</h3>
+              <p>跨账号、跨区域、跨环境自动发现资源，统一标签体系与生命周期状态，消除资产管理盲区。</p>
+              <ul class="mini-checks">
+                <li>多云 API 与 Agent 双通道采集</li>
+                <li>业务、应用、资源自动关联</li>
+                <li>资产变更与告警统一时间线</li>
+              </ul>
+            </div>
+            <div class="tab-panel" id="panel-topology" role="tabpanel" aria-labelledby="tab-topology" data-panel="topology" hidden>
+              <h3>看见依赖，才看得懂故障</h3>
+              <p>自动构建服务上下游关系，秒级定位故障影响范围，避免在复杂调用链中依赖经验猜测。</p>
+              <ul class="mini-checks">
+                <li>动态关系图谱与影响分析</li>
+                <li>告警自动归并到业务服务</li>
+                <li>跨云、跨集群链路统一展示</li>
+              </ul>
+            </div>
+            <div class="tab-panel" id="panel-changes" role="tabpanel" aria-labelledby="tab-changes" data-panel="changes" hidden>
+              <h3>每一次变化，都可回看</h3>
+              <p>资产、配置、发布与操作变更统一留痕。快速回答“什么变了”，让排障从数小时缩短到数分钟。</p>
+              <ul class="mini-checks">
+                <li>变更前后配置差异对比</li>
+                <li>发布、操作、告警关联分析</li>
+                <li>完整审计记录与权限控制</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="cmdb-demo reveal">
+          <div class="demo-shell">
+            <div class="demo-head">
+              <div>
+                <span class="demo-kicker">RELATIONSHIP GRAPH</span>
+                <strong>交易域 · 生产环境</strong>
+              </div>
+              <div class="demo-filter"><span></span>实时更新</div>
+            </div>
+            <div class="demo-tabs-visual" aria-hidden="true">
+              <div class="demo-topology-view active" data-visual="assets">
+                <div class="visual-breadcrumb"><span>全部资源</span><i>/</i><strong>交易域</strong></div>
+                <div class="asset-kpis">
+                  <div><small>资源总量</small><strong>2,486</strong><em>+38 本周</em></div>
+                  <div><small>服务健康</small><strong>99.96%</strong><em>稳定</em></div>
+                  <div><small>待关注</small><strong>3</strong><em class="warn">1 项高危</em></div>
+                </div>
+                <div class="asset-list">
+                  <div class="asset-row table-head"><span>资源名称</span><span>类型</span><span>区域</span><span>状态</span></div>
+                  <div class="asset-row"><span><i class="type-ico k8s">K</i>order-service</span><span>Deployment</span><span>cn-shanghai</span><em class="ok">运行中</em></div>
+                  <div class="asset-row"><span><i class="type-ico redis">R</i>order-cache</span><span>Redis 7.2</span><span>cn-shanghai</span><em class="ok">运行中</em></div>
+                  <div class="asset-row"><span><i class="type-ico mysql">M</i>trade-db</span><span>MySQL 8.0</span><span>cn-hangzhou</span><em class="ok">运行中</em></div>
+                  <div class="asset-row"><span><i class="type-ico nacos">N</i>nacos-prod</span><span>Nacos 2.4</span><span>idc-01</span><em class="warn-text">需关注</em></div>
+                </div>
+              </div>
+
+              <div class="demo-topology-view" data-visual="topology">
+                <div class="visual-breadcrumb"><span>关系拓扑</span><i>/</i><strong>订单服务</strong></div>
+                <div class="relationship-canvas">
+                  <svg viewBox="0 0 520 330" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M260 155 L90 76M260 155 L430 76M260 155 L95 252M260 155 L430 252M260 155 L260 280"/>
+                    <path class="soft" d="M90 76 L430 76M95 252 L430 252"/>
+                  </svg>
+                  <div class="rel-node rel-center"><i>API</i><strong>order-service</strong><small>Healthy</small></div>
+                  <div class="rel-node rel-a"><i>GW</i><strong>Nginx</strong><small>2 实例</small></div>
+                  <div class="rel-node rel-b"><i>KV</i><strong>Redis</strong><small>3 实例</small></div>
+                  <div class="rel-node rel-c"><i>DB</i><strong>MySQL</strong><small>主从集群</small></div>
+                  <div class="rel-node rel-d"><i>MQ</i><strong>RocketMQ</strong><small>4 Broker</small></div>
+                  <div class="rel-node rel-e"><i>CFG</i><strong>Nacos</strong><small>3 节点</small></div>
+                </div>
+              </div>
+
+              <div class="demo-topology-view" data-visual="changes">
+                <div class="visual-breadcrumb"><span>变更中心</span><i>/</i><strong>最近 24 小时</strong></div>
+                <div class="change-timeline">
+                  <div class="change-item"><span class="change-time">14:32</span><span class="change-marker blue"></span><div><strong>order-service 发布新版本</strong><p>v2.8.1 → v2.8.2 · Kubernetes</p><small>张运维 · 执行成功</small></div></div>
+                  <div class="change-item"><span class="change-time">13:18</span><span class="change-marker green"></span><div><strong>Redis 集群扩容完成</strong><p>8 GB → 16 GB · 3 节点</p><small>自动化策略 · 执行成功</small></div></div>
+                  <div class="change-item"><span class="change-time">11:06</span><span class="change-marker orange"></span><div><strong>Nacos 配置参数变更</strong><p>max-connections: 500 → 800</p><small>李研发 · 已审计</small></div></div>
+                  <div class="change-item"><span class="change-time">09:42</span><span class="change-marker"></span><div><strong>安全组规则更新</strong><p>新增 2 条入站规则 · 阿里云</p><small>系统同步 · 已记录</small></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="demo-footer">
+              <span><i></i>数据同步正常</span>
+              <span>最近同步：8 秒前</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section k8s-section" id="kubernetes">
+      <div class="container k8s-panel reveal">
+        <div class="k8s-copy">
+          <span class="eyebrow">KUBERNETES OPERATIONS</span>
+          <h2><span>从安装到运行，</span><span>复杂集群变简单。</span></h2>
+          <p>覆盖集群部署、节点管理、应用编排、版本升级与故障诊断。生产级最佳实践被封装成可复用的自动化流程。</p>
+          <div class="k8s-steps">
+            <div><span>01</span><strong>快速安装</strong><small>离线 / 在线部署</small></div>
+            <div><span>02</span><strong>统一纳管</strong><small>多集群统一视图</small></div>
+            <div><span>03</span><strong>持续运维</strong><small>巡检 / 扩缩容 / 升级</small></div>
+          </div>
+          <a class="button button-ghost" href="#architecture">查看集群治理方案 <span>→</span></a>
+        </div>
+
+        <div class="terminal-window">
+          <div class="terminal-bar">
+            <div class="window-dots"><span></span><span></span><span></span></div>
+            <span>nexops-cli — cluster deploy</span>
+            <span class="terminal-badge">AUTOMATED</span>
+          </div>
+          <div class="terminal-body">
+            <div class="term-line muted"><span>$</span> nexops cluster create --env prod</div>
+            <div class="term-line success"><span>✓</span> 前置检查通过 <em>6/6</em></div>
+            <div class="term-line success"><span>✓</span> 节点初始化完成 <em>12 nodes</em></div>
+            <div class="term-line success"><span>✓</span> 控制平面部署完成 <em>HA</em></div>
+            <div class="term-line success"><span>✓</span> CNI / CSI / Ingress 安装完成</div>
+            <div class="term-line success"><span>✓</span> 集群健康检查通过 <em>96/100</em></div>
+            <div class="term-divider"></div>
+            <div class="term-cluster">
+              <div><span class="cluster-pulse"></span><strong>prod-shanghai-01</strong><small>Ready</small></div>
+              <span>v1.30.4</span><span>12 Nodes</span><span>128 Pods</span>
+            </div>
+            <div class="term-line typing"><span>$</span> <i class="term-cursor"></i></div>
+          </div>
+          <div class="terminal-glow" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section middleware-section" id="middleware">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <span class="eyebrow">MIDDLEWARE DELIVERY</span>
+          <h2>常用中间件，<br />一次部署到位</h2>
+          <p>标准化安装、配置、监控和巡检。按需交付，不再从零拼接脚本与最佳实践。</p>
+        </div>
+
+        <div class="middleware-grid reveal">
+          <article class="mw-card mw-card-featured">
+            <span class="mw-badge">ONE-CLICK</span>
+            <div class="mw-logo nginx-logo">N</div>
+            <div><h3>Nginx</h3><p>负载均衡与反向代理</p></div>
+            <ul><li>配置模板</li><li>证书管理</li><li>健康检查</li></ul>
+            <span class="mw-arrow">↗</span>
+          </article>
+          <article class="mw-card">
+            <div class="mw-logo redis-logo">R</div>
+            <div><h3>Redis</h3><p>高性能缓存</p></div>
+            <ul><li>主从 / 集群</li><li>内存分析</li><li>慢查询</li></ul>
+            <span class="mw-arrow">↗</span>
+          </article>
+          <article class="mw-card">
+            <div class="mw-logo nacos-logo">N</div>
+            <div><h3>Nacos</h3><p>注册与配置中心</p></div>
+            <ul><li>高可用部署</li><li>配置追踪</li><li>服务治理</li></ul>
+            <span class="mw-arrow">↗</span>
+          </article>
+          <article class="mw-card">
+            <div class="mw-logo mysql-logo">M</div>
+            <div><h3>MySQL</h3><p>关系型数据库</p></div>
+            <ul><li>主从复制</li><li>备份恢复</li><li>慢 SQL</li></ul>
+            <span class="mw-arrow">↗</span>
+          </article>
+          <article class="mw-card">
+            <div class="mw-logo rocket-logo">R</div>
+            <div><h3>RocketMQ</h3><p>消息队列</p></div>
+            <ul><li>Broker 管理</li><li>堆积监控</li><li>Topic 巡检</li></ul>
+            <span class="mw-arrow">↗</span>
+          </article>
+          <article class="mw-card">
+            <div class="mw-logo es-logo">E</div>
+            <div><h3>Elasticsearch</h3><p>搜索与分析引擎</p></div>
+            <ul><li>集群部署</li><li>索引治理</li><li>容量预测</li></ul>
+            <span class="mw-arrow">↗</span>
+          </article>
+          <article class="mw-card">
+            <div class="mw-logo kibana-logo">K</div>
+            <div><h3>Kibana</h3><p>可视化分析</p></div>
+            <ul><li>一键接入</li><li>空间管理</li><li>访问审计</li></ul>
+            <span class="mw-arrow">↗</span>
+          </article>
+          <article class="mw-card mw-card-more">
+            <span class="more-icon">＋</span>
+            <div><h3>更多组件</h3><p>Kafka、RabbitMQ、MinIO…</p></div>
+            <span class="mw-arrow">→</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section inspection-section" id="inspection">
+      <div class="container split-layout inspection-layout">
+        <div class="inspection-visual reveal">
+          <div class="inspect-shell">
+            <div class="inspect-head">
+              <div>
+                <span class="demo-kicker">AUTOMATED INSPECTION</span>
+                <strong>每日健康巡检</strong>
+              </div>
+              <button class="inspect-run" type="button" id="runInspection">
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.6-3.9M13.5 2.5V6H10"/></svg>
+                <span>立即巡检</span>
+              </button>
+            </div>
+            <div class="inspect-summary">
+              <div class="big-score">
+                <div class="big-score-ring"><span><strong>96</strong><small>/ 100</small></span></div>
+                <div><span>整体健康度</span><strong>运行状态优秀</strong><small>较昨日提升 2 分</small></div>
+              </div>
+              <div class="inspect-counts">
+                <div><span>已检查项</span><strong>1,248</strong></div>
+                <div><span>发现问题</span><strong class="warn-text">7</strong></div>
+                <div><span>可自动修复</span><strong>5</strong></div>
+              </div>
+            </div>
+            <div class="inspect-progress-wrap">
+              <div class="inspect-progress-label"><span id="inspectStatus">巡检完成 · 2026-11-06 06:00</span><em id="inspectPercent">100%</em></div>
+              <div class="inspect-progress"><span id="inspectProgress"></span></div>
+            </div>
+            <div class="inspect-results">
+              <div class="inspect-row">
+                <span class="inspect-type host"><svg viewBox="0 0 18 18"><rect x="3" y="3" width="12" height="5" rx="1"/><rect x="3" y="10" width="12" height="5" rx="1"/><path d="M6 5.5h.01M6 12.5h.01"/></svg></span>
+                <div><strong>主机巡检</strong><small>CPU、内存、磁盘、进程</small></div>
+                <span class="inspect-ok">全部通过</span>
+                <span class="inspect-score">100</span>
+              </div>
+              <div class="inspect-row">
+                <span class="inspect-type k8s"><svg viewBox="0 0 18 18"><path d="m9 2 6 3.5v7L9 16l-6-3.5v-7L9 2Z"/><path d="m3 5.5 6 3.5 6-3.5M9 9v7"/></svg></span>
+                <div><strong>Kubernetes 巡检</strong><small>控制面、节点、工作负载</small></div>
+                <span class="inspect-ok">全部通过</span>
+                <span class="inspect-score">98</span>
+              </div>
+              <div class="inspect-row">
+                <span class="inspect-type redis"><svg viewBox="0 0 18 18"><path d="m3 5 6-3 6 3-6 3-6-3Z"/><path d="m3 9 6 3 6-3M3 13l6 3 6-3"/></svg></span>
+                <div><strong>中间件巡检</strong><small>Redis、MySQL、Nacos</small></div>
+                <span class="inspect-warn">7 项建议</span>
+                <span class="inspect-score warn-text">89</span>
+              </div>
+            </div>
+            <div class="inspect-insight">
+              <span class="insight-mini-icon">✦</span>
+              <div><strong>AI 优化建议已生成</strong><p>Redis 内存水位持续上升，建议优化 3 个无过期时间的 Key。</p></div>
+              <span class="insight-link">查看报告 →</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="split-copy inspection-copy reveal">
+          <span class="eyebrow">INTELLIGENT INSPECTION</span>
+          <h2>比问题更早，<br />发现问题的苗头。</h2>
+          <p class="section-lede">自动执行主机、Kubernetes 与中间件巡检，从海量指标中识别异常模式。不只告诉你“哪里错了”，更给出可执行的修复建议。</p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <span class="feature-number">01</span>
+              <div><h3>三大巡检域，全面覆盖</h3><p>内置 300+ 巡检项，覆盖资源、容器、数据库、缓存、消息队列等关键场景。</p></div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-number">02</span>
+              <div><h3>AI 风险识别与归因</h3><p>结合指标趋势与历史基线，识别容量、性能、配置和安全风险，降低误报噪音。</p></div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-number">03</span>
+              <div><h3>从报告直达处置</h3><p>巡检项与自动化策略联动，高频问题一键修复，复杂问题生成标准处置路径。</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section automation-section" id="automation">
+      <div class="container">
+        <div class="automation-heading reveal">
+          <div>
+            <span class="eyebrow">AUTONOMOUS REMEDIATION</span>
+            <h2>让简单问题，<br />自己恢复。</h2>
+          </div>
+          <div>
+            <p>从告警触发到处置完成，策略引擎与 AI 协同工作。每一次执行都有校验、有记录、可回滚。</p>
+            <button class="button button-primary js-play-remediation" type="button" id="playRemediation">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 8 5-8 5V3Z"/></svg>
+              播放处置流程
+            </button>
+          </div>
+        </div>
+
+        <div class="remediation-console reveal" id="remediationConsole">
+          <div class="remediation-topbar">
+            <div><span class="live-dot"></span><strong>INCIDENT #OPS-2486</strong><span class="incident-tag">自动处置中</span></div>
+            <span class="incident-time">14:32:08</span>
+          </div>
+          <div class="remediation-body">
+            <div class="incident-panel">
+              <div class="incident-icon"><svg viewBox="0 0 24 24"><path d="M12 3 2.8 20h18.4L12 3Z"/><path d="M12 9v5M12 17.2v.1"/></svg></div>
+              <span class="incident-label">P2 · 高风险告警</span>
+              <h3>Redis 节点内存使用率超过 92%</h3>
+              <p>redis-cache-prod-03 · 华东生产环境</p>
+              <div class="incident-metrics">
+                <div><span>内存使用</span><strong>92.4%</strong><i class="bar"><b style="width:92%"></b></i></div>
+                <div><span>当前连接</span><strong>8,426</strong><i class="bar"><b style="width:68%"></b></i></div>
+                <div><span>响应延迟</span><strong>18 ms</strong><i class="bar"><b style="width:34%"></b></i></div>
+              </div>
+              <div class="incident-impact"><span>影响范围</span><div><i>order-service</i><i>cart-service</i><i>product-api</i></div></div>
+            </div>
+
+            <div class="remediation-flow">
+              <div class="flow-line" aria-hidden="true"><span id="flowProgress"></span></div>
+              <div class="flow-step active" data-step="1">
+                <span class="flow-icon"><svg viewBox="0 0 18 18"><path d="M9 2v3M9 13v3M2 9h3M13 9h3M4 4l2 2M12 12l2 2M14 4l-2 2M6 12l-2 2"/><circle cx="9" cy="9" r="2.5"/></svg></span>
+                <div><span>01 · DETECT</span><strong>异常触发</strong><p>实时监控发现内存指标越过阈值</p></div>
+                <em>14:32:08</em>
+              </div>
+              <div class="flow-step" data-step="2">
+                <span class="flow-icon"><svg viewBox="0 0 18 18"><path d="m9 2 2 4.5L15.5 8 11 10l-2 5-2-5L2.5 8 7 6.5 9 2Z"/></svg></span>
+                <div><span>02 · DIAGNOSE</span><strong>AI 诊断</strong><p>定位到 3 个大 Key 与连接池配置异常</p></div>
+                <em>14:32:11</em>
+              </div>
+              <div class="flow-step" data-step="3">
+                <span class="flow-icon"><svg viewBox="0 0 18 18"><path d="M9 2 3 5v4c0 3.5 2.6 6 6 7 3.4-1 6-3.5 6-7V5l-6-3Z"/><path d="m6.2 9 1.8 1.8 3.8-4"/></svg></span>
+                <div><span>03 · VALIDATE</span><strong>策略校验</strong><p>命中安全扩容策略，变更窗口符合要求</p></div>
+                <em>14:32:12</em>
+              </div>
+              <div class="flow-step" data-step="4">
+                <span class="flow-icon"><svg viewBox="0 0 18 18"><path d="M10 2 4 10h4l-.2 6L14 8h-4V2Z"/></svg></span>
+                <div><span>04 · EXECUTE</span><strong>自动执行</strong><p>扩容至 16 GB，滚动验证服务健康状态</p></div>
+                <em>14:33:42</em>
+              </div>
+              <div class="resolution-card" id="resolutionCard">
+                <span class="resolution-icon"><svg viewBox="0 0 18 18"><path d="m3 9 3.5 3.5L15 4.5"/></svg></span>
+                <div><strong>处置完成</strong><p>内存使用率降至 58.2%，服务运行正常</p></div>
+                <span>耗时 94s</span>
+              </div>
+            </div>
+          </div>
+          <div class="remediation-footer">
+            <span><svg viewBox="0 0 16 16"><path d="M5 7V5a3 3 0 0 1 6 0v2M3 7h10v7H3V7Z"/></svg>全链路审计已记录</span>
+            <span>策略：Redis 高内存自动扩容 v1.4</span>
+          </div>
+        </div>
+
+        <div class="automation-benefits reveal">
+          <div><strong>01</strong><span>低风险策略自动执行</span><small>高频、标准化问题无需人工介入</small></div>
+          <div><strong>02</strong><span>执行前后双重校验</span><small>每一步操作都验证业务健康状态</small></div>
+          <div><strong>03</strong><span>完整审计与回滚机制</span><small>谁触发、做了什么、结果如何全留痕</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section architecture-section" id="architecture">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <span class="eyebrow">PLATFORM ARCHITECTURE</span>
+          <h2>开放、可信、<br />可演进的运维底座</h2>
+          <p>从基础设施接入到智能决策，再到自动化执行。模块化架构适配不同规模与部署环境。</p>
+        </div>
+
+        <div class="architecture-board reveal">
+          <div class="arch-column">
+            <div class="arch-label"><span>01</span>接入层</div>
+            <div class="arch-card"><span class="arch-icon">☁</span><div><strong>多云接入</strong><small>OpenAPI / Agent</small></div></div>
+            <div class="arch-card"><span class="arch-icon">⌘</span><div><strong>私有化环境</strong><small>IDC / 边缘节点</small></div></div>
+            <div class="arch-card"><span class="arch-icon">◫</span><div><strong>K8s & Middleware</strong><small>集群 / 组件探针</small></div></div>
+          </div>
+          <div class="arch-connector" aria-hidden="true"><span></span></div>
+          <div class="arch-column core-column">
+            <div class="arch-label"><span>02</span>平台核心</div>
+            <div class="arch-core-card">
+              <span class="arch-core-glow"></span>
+              <div class="arch-core-mark"><i></i></div>
+              <strong>NEXOPS Intelligence Core</strong>
+              <p>统一数据模型 · CMDB · 智能分析 · 策略引擎</p>
+              <div class="arch-pills"><span>资产图谱</span><span>指标中心</span><span>AI 诊断</span><span>自动化</span></div>
+            </div>
+          </div>
+          <div class="arch-connector" aria-hidden="true"><span></span></div>
+          <div class="arch-column">
+            <div class="arch-label"><span>03</span>交付层</div>
+            <div class="arch-card"><span class="arch-icon">▤</span><div><strong>统一运维门户</strong><small>资产 / 集群 / 巡检</small></div></div>
+            <div class="arch-card"><span class="arch-icon">◇</span><div><strong>开放 API & Webhook</strong><small>集成现有流程</small></div></div>
+            <div class="arch-card"><span class="arch-icon">◉</span><div><strong>权限与审计</strong><small>RBAC / 操作留痕</small></div></div>
+          </div>
+        </div>
+
+        <div class="trust-grid reveal">
+          <div><span class="trust-icon"><svg viewBox="0 0 20 20"><path d="M10 2 3 5v5c0 4 2.8 7 7 8 4.2-1 7-4 7-8V5l-7-3Z"/><path d="m6.8 10 2.1 2.1 4.4-4.5"/></svg></span><strong>私有化部署</strong><p>数据不出域，支持完全离线环境交付。</p></div>
+          <div><span class="trust-icon"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7"/><path d="M2.5 10h15M10 3c2.2 2 3.2 4.4 3.2 7S12.2 15 10 17c-2.2-2-3.2-4.4-3.2-7S7.8 5 10 3Z"/></svg></span><strong>多云无锁定</strong><p>统一模型屏蔽云厂商差异，灵活扩展。</p></div>
+          <div><span class="trust-icon"><svg viewBox="0 0 20 20"><rect x="4" y="8" width="12" height="9" rx="2"/><path d="M7 8V6a3 3 0 0 1 6 0v2M10 11v3"/></svg></span><strong>安全可审计</strong><p>细粒度权限、审批流与全链路操作留痕。</p></div>
+          <div><span class="trust-icon"><svg viewBox="0 0 20 20"><path d="m7 5-5 5 5 5M13 5l5 5-5 5M11.5 3l-3 14"/></svg></span><strong>开放可集成</strong><p>API、Webhook 与插件机制连接现有工具链。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <div class="container">
+        <div class="cta-card reveal">
+          <div class="cta-grid" aria-hidden="true"></div>
+          <div class="cta-orb cta-orb-a" aria-hidden="true"></div>
+          <div class="cta-orb cta-orb-b" aria-hidden="true"></div>
+          <div class="cta-content">
+            <span class="eyebrow light">NEXT INCIDENT, AUTO-RESOLVED</span>
+            <h2>让下一次故障，<br />自己恢复。</h2>
+            <p>把复杂留给我们，把稳定交给业务。用 NEXOPS 构建下一代智能运维体系。</p>
+            <div class="cta-actions">
+              <button class="button button-light button-lg js-open-demo" type="button">预约产品演示 <span>→</span></button>
+              <a class="button button-outline-light button-lg" href="mailto:hello@nexops.example">联系解决方案顾问</a>
+            </div>
+            <small>支持私有化部署 · 提供 POC 验证 · 专业团队陪跑上线</small>
+          </div>
+          <div class="cta-visual" aria-hidden="true">
+            <div class="cta-console">
+              <div class="cta-console-head"><span></span><span></span><span></span><em>system.status</em></div>
+              <div class="cta-status"><span class="big-check">✓</span><div><small>SYSTEM STATUS</small><strong>ALL SYSTEMS OPERATIONAL</strong></div></div>
+              <div class="cta-stat-row"><div><small>Availability</small><strong>99.99%</strong></div><div><small>Auto resolved</small><strong>1,286</strong></div></div>
+              <div class="cta-chart"><svg viewBox="0 0 300 100" preserveAspectRatio="none"><defs><linearGradient id="ctaFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#48e6c8" stop-opacity=".38"/><stop offset="1" stop-color="#48e6c8" stop-opacity="0"/></linearGradient></defs><path class="cta-fill" d="M0 78C22 75 30 67 50 70S78 53 100 57s30-17 52-15 31-20 55-17 38 8 57-4 24-10 36-11v90H0Z"/><path class="cta-line" d="M0 78C22 75 30 67 50 70S78 53 100 57s30-17 52-15 31-20 55-17 38 8 57-4 24-10 36-11"/></svg></div>
+              <div class="cta-log"><span></span>No active incidents detected</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a class="brand" href="#" aria-label="NEXOPS 首页">
+          <span class="brand-mark" aria-hidden="true"><span class="brand-core"></span><span class="brand-orbit"></span></span>
+          <span class="brand-word">NEXOPS</span>
+        </a>
+        <p>面向复杂基础设施的智能运维平台。<br />连接、洞察、行动，让系统持续稳定运行。</p>
+      </div>
+      <div class="footer-links">
+        <div><strong>产品</strong><a href="#cmdb">统一 CMDB</a><a href="#kubernetes">Kubernetes</a><a href="#middleware">中间件部署</a><a href="#inspection">智能巡检</a></div>
+        <div><strong>能力</strong><a href="#automation">自动处置</a><a href="#architecture">平台架构</a><a href="#capabilities">产品概览</a><a href="#architecture">私有化部署</a></div>
+        <div><strong>联系</strong><a href="mailto:hello@nexops.example">商务咨询</a><a href="mailto:support@nexops.example">技术支持</a><a href="#main">返回顶部</a></div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 NEXOPS. All rights reserved.</span>
+      <span>隐私政策 · 服务条款 · 安全合规</span>
+    </div>
+  </footer>
+
+  <dialog class="demo-dialog" id="demoDialog" aria-labelledby="demoTitle">
+    <div class="dialog-shell">
+      <button class="dialog-close" type="button" aria-label="关闭预约窗口">
+        <svg viewBox="0 0 20 20"><path d="m5 5 10 10M15 5 5 15"/></svg>
+      </button>
+      <div class="dialog-aside">
+        <span class="eyebrow light">GET A DEMO</span>
+        <h2>看看 NEXOPS<br />如何改变你的运维。</h2>
+        <p>30 分钟产品演示，结合你的基础设施场景，给出可落地的智能运维路径。</p>
+        <ul><li>统一资产与多云纳管演示</li><li>Kubernetes 与中间件治理</li><li>AI 巡检与自动处置闭环</li></ul>
+      </div>
+      <form class="demo-form" id="demoForm">
+        <div class="form-heading">
+          <span>预约产品演示</span>
+          <p>填写信息，我们将在 1 个工作日内与你联系。</p>
+        </div>
+        <label>姓名<input type="text" name="name" placeholder="怎么称呼你" required /></label>
+        <label>企业邮箱<input type="email" name="email" placeholder="name@company.com" required /></label>
+        <div class="form-row">
+          <label>公司<input type="text" name="company" placeholder="公司名称" required /></label>
+          <label>联系电话<input type="tel" name="phone" placeholder="手机号" required /></label>
+        </div>
+        <label>当前关注
+          <select name="interest">
+            <option>统一 CMDB / 多云纳管</option>
+            <option>Kubernetes 运维管理</option>
+            <option>中间件标准化部署</option>
+            <option>智能巡检与自动处置</option>
+          </select>
+        </label>
+        <button class="button button-primary" type="submit">提交预约 <span>→</span></button>
+        <small>提交即表示同意我们仅将信息用于本次产品沟通。</small>
+      </form>
+      <div class="form-success" id="formSuccess" hidden>
+        <span class="success-mark">✓</span>
+        <h3>预约已收到</h3>
+        <p>感谢关注 NEXOPS。解决方案顾问将在 1 个工作日内与你联系。</p>
+        <button class="button button-primary dialog-close-success" type="button">完成</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="./app.js"></script>
+</body>
+</html>
