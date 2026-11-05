@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="AiOps 智能运维平台，统一管理多云与私有化基础设施、Kubernetes 集群、中间件与 CI/CD 发布流水线，提供智能巡检和自动处置能力。" />
   <meta name="theme-color" content="#070b12" />
-  <meta name="aiops-github-owner" content="macrolai" />
-  <meta name="aiops-github-repo" content="aiops" />
   <meta name="aiops-reservation-endpoint" content="https://aiops-reservation.macro-aiops.workers.dev/api/reservation" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23070b12'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2349e6cf'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%234f85ff' stroke-width='1.5'/%3E%3C/svg%3E" />
   <title>AiOps · 智能运维与 CI/CD 平台</title>
@@ -5769,7 +5767,7 @@ ul {
   padding: 45px;
   text-align: center;
 }
-.form-fallback[hidden] { display: none; }
+.demo-form[hidden], .form-success[hidden], .form-fallback[hidden] { display: none !important; }
 .fallback-mark {
   display: grid;
   width: 58px;
@@ -6718,24 +6716,22 @@ ul {
           </select>
         </label>
         <button class="button button-primary" type="submit">提交预约 <span>→</span></button>
-        <small id="reservationModeHint">提交后将直接创建 GitHub Issue，由 Actions 自动发送邮件并脱敏关闭。</small>
+        <small id="reservationModeHint">提交后将安全发送预约信息至 macro_lai@163.com；若在线提交失败，可直接通过邮件发送。</small>
       </form>
       <div class="form-success" id="formSuccess" hidden>
         <span class="success-mark">✓</span>
         <h3 id="formSuccessTitle">预约已提交</h3>
-        <p id="formSuccessMessage">预约信息已创建，Actions 正在发送邮件至 <a href="mailto:macro_lai@163.com">macro_lai@163.com</a>。</p>
+        <p id="formSuccessMessage">预约信息已发送至 <a href="mailto:macro_lai@163.com">macro_lai@163.com</a>，解决方案顾问将在 1 个工作日内与你联系。</p>
         <div class="success-actions">
-          <a class="button button-primary" id="githubIssueSuccessLink" href="https://github.com/macrolai/aiops/issues/new" target="_blank" rel="noopener noreferrer">查看 GitHub Issue</a>
-          <button class="button button-ghost dialog-close-success" type="button">完成</button>
+          <button class="button button-primary dialog-close-success" type="button">完成</button>
         </div>
       </div>
       <div class="form-fallback" id="formFallback" hidden>
         <span class="fallback-mark">!</span>
-        <h3 id="formFallbackTitle">暂时无法直接提交</h3>
-        <p id="formFallbackMessage">可以打开 GitHub 预约页面手动创建 Issue，或复制预约内容发送至 <a href="mailto:macro_lai@163.com">macro_lai@163.com</a>。</p>
+        <h3 id="formFallbackTitle">预约暂时无法在线提交</h3>
+        <p id="formFallbackMessage">请将预约信息发送至 <a href="mailto:macro_lai@163.com">macro_lai@163.com</a>，我们会尽快与你联系。</p>
         <div class="fallback-actions">
-          <a class="button button-primary" id="githubIssueFallback" href="https://github.com/macrolai/aiops/issues/new" target="_blank" rel="noopener noreferrer">打开 GitHub 预约页面</a>
-          <button class="button button-ghost" id="copyReservation" type="button">复制预约内容</button>
+          <button class="button button-primary" id="copyReservation" type="button">复制预约内容</button>
           <a class="button button-ghost" id="mailtoFallback" href="mailto:macro_lai@163.com">用邮件发送</a>
         </div>
         <button class="form-fallback-back" id="retryReservation" type="button">返回修改</button>
@@ -7022,10 +7018,6 @@ ul {
   const copyReservation = document.getElementById('copyReservation');
   const mailtoFallback = document.getElementById('mailtoFallback');
   const retryReservation = document.getElementById('retryReservation');
-  const githubIssueSuccessLink = document.getElementById('githubIssueSuccessLink');
-  const githubIssueFallback = document.getElementById('githubIssueFallback');
-  const githubOwner = (document.querySelector('meta[name="aiops-github-owner"]')?.content || '').trim() || 'macrolai';
-  const githubRepo = (document.querySelector('meta[name="aiops-github-repo"]')?.content || '').trim() || 'aiops';
   const reservationEndpoint = (document.querySelector('meta[name="aiops-reservation-endpoint"]')?.content || '').trim();
   const reservationModeHint = document.getElementById('reservationModeHint');
   const formSuccessTitle = document.getElementById('formSuccessTitle');
@@ -7035,15 +7027,8 @@ ul {
   let lastReservationText = '';
   let lastReservationMailto = 'mailto:macro_lai@163.com';
   if (reservationModeHint && !reservationEndpoint) {
-    reservationModeHint.textContent = '提交后将打开 GitHub 预约页面；创建 Issue 后，GitHub Actions 会自动发送邮件并脱敏关闭。';
+    reservationModeHint.textContent = '当前使用邮件方式提交预约，请发送至 macro_lai@163.com。';
   }
-
-  const encodeBase64Utf8 = (value) => {
-    const bytes = new TextEncoder().encode(value);
-    let binary = '';
-    bytes.forEach((byte) => { binary += String.fromCharCode(byte); });
-    return btoa(binary);
-  };
 
   const makeReservation = (data) => {
     const submittedAt = new Intl.DateTimeFormat('zh-CN', {
@@ -7051,31 +7036,21 @@ ul {
       year: 'numeric', month: '2-digit', day: '2-digit',
       hour: '2-digit', minute: '2-digit', hour12: false
     }).format(new Date());
-    const subject = `[AiOps 预约] ${data.company || ''} - ${data.name || ''}`;
+    const subject = `AiOps 产品演示预约 - ${data.company || ''} - ${data.name || ''}`;
     const readableBody = [
-      '### AiOps 产品演示预约',
+      'AiOps 产品演示预约',
       '',
-      `- **姓名**：${data.name || ''}`,
-      `- **企业邮箱**：${data.email || ''}`,
-      `- **公司**：${data.company || ''}`,
-      `- **联系电话**：${data.phone || ''}`,
-      `- **当前关注**：${data.interest || ''}`,
-      `- **提交时间**：${submittedAt}`,
+      `姓名：${data.name || ''}`,
+      `企业邮箱：${data.email || ''}`,
+      `公司：${data.company || ''}`,
+      `联系电话：${data.phone || ''}`,
+      `当前关注：${data.interest || ''}`,
+      `提交时间：${submittedAt}`,
       '',
-      '> 此 Issue 创建后，AiOps GitHub Actions 会自动发送邮件并脱敏关闭。'
+      '请解决方案顾问与我联系，谢谢。'
     ].join('\n');
-    const markerData = {
-      ...data,
-      submitted_at: new Date().toISOString(),
-      submitted_at_text: submittedAt,
-      source: 'AiOps 产品介绍页'
-    };
-    const body = `${readableBody}\n\n<!-- AIOPS_RESERVATION_DATA:${encodeBase64Utf8(JSON.stringify(markerData))} -->`;
-    const issueUrl = `https://github.com/${encodeURIComponent(githubOwner)}/${encodeURIComponent(githubRepo)}/issues/new?title=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     return {
       subject,
-      body,
-      issueUrl,
       copyText: `收件人：macro_lai@163.com\n主题：${subject}\n\n${readableBody}`,
       mailto: `mailto:macro_lai@163.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(readableBody)}`
     };
@@ -7117,72 +7092,50 @@ ul {
     lastReservationText = reservation.copyText;
     lastReservationMailto = reservation.mailto;
     if (mailtoFallback) mailtoFallback.href = reservation.mailto;
-    if (githubIssueSuccessLink) githubIssueSuccessLink.href = reservation.issueUrl;
-    if (githubIssueFallback) githubIssueFallback.href = reservation.issueUrl;
 
-    // Preferred path: the Worker creates the issue directly, so visitors do
-    // not need a GitHub account or any manual confirmation.
-    if (reservationEndpoint) {
-      const submitButton = demoForm.querySelector('button[type="submit"]');
-      const originalText = submitButton?.innerHTML;
-      if (submitButton) {
-        submitButton.disabled = true;
-        submitButton.innerHTML = '正在提交…';
-      }
-      const controller = new AbortController();
-      const timeout = window.setTimeout(() => controller.abort(), 15000);
-      try {
-        const response = await fetch(reservationEndpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(data),
-          signal: controller.signal
-        });
-        const result = await response.json().catch(() => ({}));
-        if (!response.ok || !result.ok) throw new Error(result.error || `HTTP ${response.status}`);
-        demoForm.hidden = true;
-        if (formFallback) formFallback.hidden = true;
-        if (formSuccess) formSuccess.hidden = false;
-        if (formSuccessTitle) formSuccessTitle.textContent = '预约已提交';
-        if (formSuccessMessage) formSuccessMessage.textContent = `预约已创建（Issue #${result.issue_number}），GitHub Actions 正在发送邮件至 macro_lai@163.com。`;
-        if (githubIssueSuccessLink && result.issue_url) {
-          githubIssueSuccessLink.href = result.issue_url;
-          githubIssueSuccessLink.hidden = false;
-        }
-      } catch (error) {
-        demoForm.hidden = true;
-        if (formSuccess) formSuccess.hidden = true;
-        if (formFallback) formFallback.hidden = false;
-        if (formFallbackTitle) formFallbackTitle.textContent = '在线提交暂时失败';
-        if (formFallbackMessage) formFallbackMessage.textContent = '可以直接打开 GitHub 预约页面手动创建 Issue，或复制预约内容发送至 macro_lai@163.com。';
-      } finally {
-        window.clearTimeout(timeout);
-        if (submitButton) {
-          submitButton.disabled = false;
-          submitButton.innerHTML = originalText || '提交预约 <span>→</span>';
-        }
-      }
+    const showFallback = () => {
+      demoForm.hidden = true;
+      if (formSuccess) formSuccess.hidden = true;
+      if (formFallback) formFallback.hidden = false;
+      if (formFallbackTitle) formFallbackTitle.textContent = '预约暂时无法在线提交';
+      if (formFallbackMessage) formFallbackMessage.textContent = '请将预约信息发送至 macro_lai@163.com，我们会尽快与你联系。';
+    };
+
+    if (!reservationEndpoint) {
+      showFallback();
       return;
     }
 
-    // No Worker configured: preserve the dependency-free GitHub page fallback.
-    let opened = false;
+    const submitButton = demoForm.querySelector('button[type="submit"]');
+    const originalText = submitButton?.innerHTML;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.innerHTML = '正在提交…';
+    }
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 15000);
     try {
-      const issueWindow = window.open(reservation.issueUrl, '_blank');
-      if (issueWindow) {
-        issueWindow.opener = null;
-        opened = true;
+      const response = await fetch(reservationEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data),
+        signal: controller.signal
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.ok) throw new Error(result.error || `HTTP ${response.status}`);
+      demoForm.hidden = true;
+      if (formFallback) formFallback.hidden = true;
+      if (formSuccess) formSuccess.hidden = false;
+      if (formSuccessTitle) formSuccessTitle.textContent = '预约已提交';
+      if (formSuccessMessage) formSuccessMessage.textContent = '预约信息已发送至 macro_lai@163.com，解决方案顾问将在 1 个工作日内与你联系。';
+    } catch (_) {
+      showFallback();
+    } finally {
+      window.clearTimeout(timeout);
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalText || '提交预约 <span>→</span>';
       }
-    } catch (_) {}
-    demoForm.hidden = true;
-    if (formSuccess) formSuccess.hidden = !opened;
-    if (formFallback) formFallback.hidden = opened;
-    if (opened) {
-      if (formSuccessTitle) formSuccessTitle.textContent = 'GitHub 预约页面已打开';
-      if (formSuccessMessage) formSuccessMessage.textContent = '请在新窗口登录 GitHub 并点击 Create。Issue 创建后，Actions 会自动发送邮件并脱敏关闭。';
-      if (githubIssueSuccessLink) githubIssueSuccessLink.textContent = '重新打开预约页面';
-    } else if (formFallbackTitle) {
-      formFallbackTitle.textContent = '浏览器阻止了 GitHub 页面';
     }
   });
 
