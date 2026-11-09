@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0b1220" />
-  <meta name="description" content="AiOps 是面向云上与私有化机房的智能运维平台，统一 CMDB、Kubernetes、巡检、受控操作、多租户权限与 CI/CD 发布。" />
+  <meta name="description" content="ADP 是面向云上与私有化机房的数智化研发运维平台，统一 CMDB、Kubernetes、AI 智能巡检、受控操作、多租户权限与 CI/CD 发布。" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230b1220'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%232563eb'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%2306b6d4' stroke-width='1.5'/%3E%3C/svg%3E" />
-  <title>AiOps · 多云与 Kubernetes 智能运维平台</title>
+  <title>ADP · 多云与 Kubernetes 数智化研发运维平台</title>
   <style>
     :root {
       --brand: #2563eb;
@@ -40,7 +40,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 68px; overflow-x: hidden; }
+    html { scroll-behavior: auto; scroll-padding-top: 68px; overflow-x: hidden; }
     body {
       margin: 0;
       overflow-x: hidden;
@@ -746,6 +746,63 @@
     .inspection-highlight strong { display: block; font-size: 11px; font-weight: 650; }
     .inspection-highlight p { margin-top: 4px; color: var(--muted); font-size: 10px; line-height: 1.65; }
 
+    .inspection-suite { margin-top: 72px; padding-top: 58px; border-top: 1px solid var(--line); }
+    .inspection-suite-head { display: flex; align-items: end; justify-content: space-between; gap: 48px; margin-bottom: 28px; }
+    .inspection-suite-head h3 { max-width: 760px; margin-top: 9px; font-size: clamp(28px, 3vw, 38px); line-height: 1.18; letter-spacing: -.04em; }
+    .inspection-suite-head > p { max-width: 430px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .inspection-console { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: #fff; box-shadow: 0 18px 42px rgba(16,24,40,.08); }
+    .inspection-console-top { display: flex; align-items: center; gap: 9px; min-height: 44px; padding: 0 14px; border-bottom: 1px solid var(--line); background: #fcfcfd; }
+    .inspection-console-top strong { font-size: 11px; }
+    .inspection-console-top span:last-child { margin-left: auto; color: var(--muted); font-size: 9px; }
+    .inspection-console-body { display: grid; grid-template-columns: 210px minmax(0, 1fr); min-height: 330px; }
+    .inspection-workspaces { padding: 13px 9px; border-right: 1px solid var(--line); background: #0b1220; color: #fff; }
+    .inspection-workspaces > strong { display: block; padding: 7px 10px 12px; color: #dbe4f1; font-size: 10px; }
+    .inspection-workspaces span { display: flex; align-items: center; gap: 8px; min-height: 30px; padding: 0 10px; border-radius: 6px; color: #8796ac; font-size: 9px; }
+    .inspection-workspaces span::before { content: ""; width: 5px; height: 5px; border-radius: 2px; background: #405069; }
+    .inspection-workspaces span.active { background: rgba(37,99,235,.16); color: #e8f0ff; box-shadow: inset 2px 0 #60a5fa; }
+    .inspection-workspaces span.active::before { background: #60a5fa; }
+    .inspection-overview { min-width: 0; padding: 16px; background: #f8fafc; }
+    .inspection-overview-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .inspection-overview-head div { min-width: 0; }
+    .inspection-overview-head strong { display: block; font-size: 11px; }
+    .inspection-overview-head small { display: block; margin-top: 2px; color: var(--muted); font-size: 8px; }
+    .inspection-overview-head .tag { margin-left: auto; }
+    .inspection-status-stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 7px; }
+    .inspection-status-stat { min-width: 0; padding: 10px; border: 1px solid var(--line); border-radius: 7px; background: #fff; }
+    .inspection-status-stat span { display: block; color: var(--muted); font-size: 8px; white-space: nowrap; }
+    .inspection-status-stat strong { display: block; margin-top: 3px; font-size: 18px; line-height: 1.2; }
+    .inspection-status-stat.healthy strong { color: #067647; }
+    .inspection-status-stat.warning strong { color: #b54708; }
+    .inspection-status-stat.critical strong { color: #b42318; }
+    .inspection-status-stat.unknown strong { color: #475467; }
+    .inspection-overview-grid { display: grid; grid-template-columns: 1.14fr .86fr; gap: 8px; margin-top: 9px; }
+    .inspection-mini-card { min-width: 0; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    .inspection-mini-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .inspection-mini-head strong { font-size: 9px; }
+    .inspection-mini-head span { color: var(--muted); font-size: 8px; }
+    .inspection-progress { height: 6px; margin-top: 12px; overflow: hidden; border-radius: 999px; background: #edf1f5; }
+    .inspection-progress i { display: block; width: 67%; height: 100%; border-radius: inherit; background: var(--brand); }
+    .inspection-task-meta { display: flex; justify-content: space-between; gap: 8px; margin-top: 8px; color: var(--muted); font-size: 8px; }
+    .inspection-ai-mini { display: grid; gap: 6px; margin-top: 10px; }
+    .inspection-ai-mini div { display: flex; align-items: center; gap: 7px; padding: 6px 7px; border-radius: 5px; background: #f9f5ff; color: #6941c6; font-size: 8px; }
+    .inspection-ai-mini i { width: 5px; height: 5px; flex: 0 0 auto; border-radius: 50%; background: #7f56d9; }
+    .inspection-module-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+    .inspection-module { min-width: 0; padding: 20px; border: 1px solid var(--line); border-radius: 11px; background: #fff; }
+    .inspection-module-top { display: flex; align-items: center; gap: 9px; }
+    .inspection-module-icon { display: grid; width: 27px; height: 27px; flex: 0 0 auto; place-items: center; border-radius: 7px; background: var(--brand-soft); color: var(--brand); font-family: var(--mono); font-size: 9px; }
+    .inspection-module h4 { font-size: 12px; font-weight: 650; }
+    .inspection-module p { margin-top: 10px; color: var(--muted); font-size: 10px; line-height: 1.72; }
+    .inspection-module .chip-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 11px; }
+    .inspection-module .chip-row span { padding: 3px 6px; border-radius: 4px; background: #f5f7fa; color: #667085; font-size: 8px; }
+    .inspection-coverage-band { display: grid; grid-template-columns: .66fr 1.34fr; gap: 22px; margin-top: 16px; padding: 22px; border: 1px solid #d1e0ff; border-radius: 12px; background: #f8fbff; }
+    .inspection-coverage-intro h4 { margin-top: 7px; font-size: 17px; letter-spacing: -.02em; }
+    .inspection-coverage-intro p { margin-top: 8px; color: var(--muted); font-size: 10px; line-height: 1.72; }
+    .inspection-coverage-groups { display: grid; gap: 10px; }
+    .inspection-coverage-group { display: grid; grid-template-columns: 110px 1fr; gap: 10px; align-items: start; }
+    .inspection-coverage-group strong { padding-top: 3px; color: #344054; font-size: 10px; }
+    .inspection-coverage-group div { display: flex; flex-wrap: wrap; gap: 5px; }
+    .inspection-coverage-group span { padding: 3px 7px; border: 1px solid #d9e5f8; border-radius: 5px; background: #fff; color: #475467; font-size: 8px; }
+
     /* Controlled operations */
     .operations-section { background: var(--page); }
     .operations-grid { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(500px, .98fr); gap: 64px; align-items: center; }
@@ -952,6 +1009,7 @@
     /* Reveal */
     .reveal { opacity: 0; transform: translateY(15px); transition: opacity .55s ease, transform .55s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+    html.anchor-jump .reveal { transition: none !important; }
 
     @media (max-width: 1120px) {
       .desktop-nav { gap: 17px; }
@@ -988,6 +1046,11 @@
       .split-feature.reverse .feature-visual { order: 2; }
       .feature-copy { max-width: 760px; }
       .inspection-layout .feature-copy { max-width: 760px; }
+      .inspection-suite-head { display: block; }
+      .inspection-suite-head > p { margin-top: 13px; }
+      .inspection-console-body { grid-template-columns: 180px minmax(0, 1fr); }
+      .inspection-module-grid { grid-template-columns: repeat(2, 1fr); }
+      .inspection-coverage-band { grid-template-columns: 1fr; }
       .operations-grid .feature-copy { max-width: 760px; }
       .governance-layout .feature-copy { max-width: 760px; }
       .architecture-shell { grid-template-columns: 1fr; }
@@ -1025,6 +1088,19 @@
       .resource-table th:nth-child(4), .resource-table td:nth-child(4), .resource-table th:nth-child(6), .resource-table td:nth-child(6) { display: none; }
       .resource-chips { grid-template-columns: repeat(2, 1fr); }
       .inspection-highlights, .security-cards, .status-grid, .collab-grid, .architecture-facts { grid-template-columns: 1fr; }
+      .inspection-suite { margin-top: 48px; padding-top: 42px; }
+      .inspection-suite-head h3 { font-size: 28px; }
+      .inspection-console-body { grid-template-columns: 1fr; }
+      .inspection-workspaces { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .inspection-workspaces > strong { grid-column: 1 / -1; padding-bottom: 7px; }
+      .inspection-workspaces span { min-width: 0; padding: 0 7px; }
+      .inspection-overview { padding: 12px; }
+      .inspection-status-stats { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+      .inspection-status-stat { padding: 8px 5px; }
+      .inspection-status-stat strong { font-size: 16px; }
+      .inspection-overview-grid, .inspection-module-grid { grid-template-columns: 1fr; }
+      .inspection-coverage-band { padding: 17px; }
+      .inspection-coverage-group { grid-template-columns: 1fr; gap: 5px; }
       .security-card:nth-child(1) { grid-column: auto; }
       .issue-card-head, .issue-card-body { padding: 14px; }
       .assessment-grid { grid-template-columns: 1fr; }
@@ -1076,10 +1152,10 @@
 
   <header class="site-header" id="siteHeader">
     <div class="container nav-shell">
-      <a class="brand" href="#top" aria-label="AiOps 首页">
+      <a class="brand" href="#top" aria-label="ADP 首页">
         <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-word">AiOps</span>
-        <span class="brand-note">智能运维平台</span>
+        <span class="brand-word">ADP</span>
+        <span class="brand-note">数智化研发运维平台</span>
       </a>
       <nav class="desktop-nav" aria-label="产品导览">
         <a href="#capabilities">产品能力</a>
@@ -1122,7 +1198,7 @@
           </div>
           <h1>让基础设施运维<br /><span>有证据，也有边界。</span></h1>
           <p class="hero-lede">
-            AiOps 把多云资产、私有化主机、Kubernetes 工作负载、巡检发现、受控操作与发布回执收进一个工作台。AI 负责分析与建议，策略负责放行，人负责最终决定。
+            ADP 把多云资产、私有化主机、Kubernetes 工作负载、巡检发现、受控操作与发布回执收进一个工作台。AI 负责分析与建议，策略负责放行，人负责最终决定。
           </p>
           <div class="hero-actions">
             <a class="button button-primary button-large" href="#capabilities">
@@ -1143,9 +1219,9 @@
 
         <div class="hero-preview">
           <div class="preview-label"><span><i></i>产品界面示意 · 演示数据</span><span>Console Preview</span></div>
-          <div class="console" aria-label="AiOps 控制台界面示意">
+          <div class="console" aria-label="ADP 控制台界面示意">
             <aside class="console-sidebar" aria-hidden="true">
-              <div class="console-brand"><i></i><strong>AiOps</strong></div>
+              <div class="console-brand"><i></i><strong>ADP</strong></div>
               <nav class="console-nav">
                 <span class="active">运行总览</span>
                 <span>资源中心</span>
@@ -1220,7 +1296,7 @@
           </div>
           <p>每一次任务、操作与验证都写入统一记录。平台不只告诉你“发生了什么”，还保留证据、决策依据、审批边界和最终结果。</p>
         </div>
-        <div class="lifecycle-flow reveal" aria-label="AiOps 运维闭环流程">
+        <div class="lifecycle-flow reveal" aria-label="ADP 运维闭环流程">
           <article class="lifecycle-step"><span class="step-index">01</span><h3>发现</h3><p>云同步、Agent 上报、Kubernetes API 与告警事件统一进入资源上下文。</p></article>
           <article class="lifecycle-step"><span class="step-index">02</span><h3>建模</h3><p>保留资源类型、来源、集群、Namespace、标签和稳定对象身份。</p></article>
           <article class="lifecycle-step"><span class="step-index">03</span><h3>巡检</h3><p>规则引擎按确定性阈值判断，并明确区分健康、告警、严重与未知。</p></article>
@@ -1410,7 +1486,7 @@
                 <div class="issue-title-row">
                   <span class="issue-severity">!</span>
                   <div><strong>Deployment 可用副本不足</strong><p>workload-readiness · 连续出现 3 次</p></div>
-                  <span class="tag orange">待 AI 评估</span>
+                  <span class="tag violet">AI 评估完成</span>
                 </div>
                 <div class="issue-scope"><span>prod-shanghai</span><span>trade-prod</span><span>Deployment</span><span>order-service</span></div>
               </div>
@@ -1432,6 +1508,111 @@
                   <button class="button button-primary button-small" type="button">生成操作单</button>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="inspection-suite reveal">
+          <div class="inspection-suite-head">
+            <div>
+              <span class="eyebrow">Inspection center</span>
+              <h3>八个工作区，<br />覆盖巡检执行、治理与运营。</h3>
+            </div>
+            <p>从异步任务、规则工程和发现项处置，到维护窗口、SLA、报告、审批和通知审计，巡检不再只是一次扫描结果，而是一套可以持续运营的工作台。</p>
+          </div>
+
+          <div class="inspection-console" aria-label="巡检中心界面示意">
+            <div class="inspection-console-top">
+              <span class="tag blue">巡检中心</span>
+              <strong>巡检总览 / 发现项 / 报告</strong>
+              <span>界面示意 · 演示数据</span>
+            </div>
+            <div class="inspection-console-body">
+              <div class="inspection-workspaces" aria-label="巡检中心工作区">
+                <strong>运维管理 · 巡检中心</strong>
+                <span class="active">巡检总览</span>
+                <span>发现项</span>
+                <span>巡检任务</span>
+                <span>规则策略</span>
+                <span>维护窗口</span>
+                <span>巡检报告</span>
+                <span>操作审批</span>
+                <span>通知与 SLA</span>
+              </div>
+              <div class="inspection-overview">
+                <div class="inspection-overview-head">
+                  <div><strong>最近一次巡检</strong><small>全部资源 · 2026-11-10 09:30 · 128 个检查对象</small></div>
+                  <span class="tag green">执行完成</span>
+                </div>
+                <div class="inspection-status-stats">
+                  <div class="inspection-status-stat healthy"><span>健康</span><strong>104</strong></div>
+                  <div class="inspection-status-stat warning"><span>告警</span><strong>16</strong></div>
+                  <div class="inspection-status-stat critical"><span>严重</span><strong>3</strong></div>
+                  <div class="inspection-status-stat unknown"><span>未知</span><strong>5</strong></div>
+                  <div class="inspection-status-stat"><span>覆盖</span><strong>128</strong></div>
+                </div>
+                <div class="inspection-overview-grid">
+                  <div class="inspection-mini-card">
+                    <div class="inspection-mini-head"><strong>异步巡检任务</strong><span>实时进度</span></div>
+                    <div class="inspection-progress" aria-hidden="true"><i></i></div>
+                    <div class="inspection-task-meta"><span>86 / 128 已处理</span><span>预计剩余 2 分钟</span></div>
+                    <div class="inspection-task-meta"><span>范围：生产项目 A / 华东集群</span><span>支持取消与失败重试</span></div>
+                  </div>
+                  <div class="inspection-mini-card">
+                    <div class="inspection-mini-head"><strong>AI 评估队列</strong><span>异步执行</span></div>
+                    <div class="inspection-ai-mini">
+                      <div><i></i><span>根因与影响分析</span></div>
+                      <div><i></i><span>推荐只读诊断动作</span></div>
+                      <div><i></i><span>自愈方案与风险分级</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="inspection-module-grid">
+            <article class="inspection-module">
+              <div class="inspection-module-top"><span class="inspection-module-icon">01</span><h4>多范围异步巡检</h4></div>
+              <p>手动或 API 触发后异步执行，实时展示批次、对象级进度和当前资源。支持取消任务，并只针对失败或异常对象重新巡检。</p>
+              <div class="chip-row"><span>全部资源</span><span>组织 / 项目 / 环境</span><span>集群</span><span>标签</span><span>指定资源</span></div>
+            </article>
+            <article class="inspection-module">
+              <div class="inspection-module-top"><span class="inspection-module-icon">02</span><h4>规则工程与生命周期</h4></div>
+              <p>支持多条件 AND / OR、持续时间和恢复阈值、连续健康次数、包含/排除标签、负责人和变更说明。规则可试运行，内置规则支持热更新与停用。</p>
+              <div class="chip-row"><span>draft</span><span>shadow</span><span>canary</span><span>active</span><span>deprecated</span></div>
+            </article>
+            <article class="inspection-module">
+              <div class="inspection-module-top"><span class="inspection-module-icon">03</span><h4>发现项运营</h4></div>
+              <p>问题按资源与规则指纹归并，保留首次/最近出现、负责人、责任团队、优先级、SLA 与完整处理时间线；重检测不会覆盖人工运营字段。</p>
+              <div class="chip-row"><span>批量确认</span><span>批量指派</span><span>抑制</span><span>故障簇</span><span>重开</span></div>
+            </article>
+            <article class="inspection-module">
+              <div class="inspection-module-top"><span class="inspection-module-icon">04</span><h4>AI 归因与知识沉淀</h4></div>
+              <p>输出问题分类、可能根因、影响范围、排查建议、自愈可行性和推荐受控动作。模型不可用时回退本地规则，人工反馈可应用到同类问题并沉淀到知识库。</p>
+              <div class="chip-row"><span>待 AI 评估</span><span>置信度</span><span>根因</span><span>影响</span><span>自愈评估</span><span>知识反馈</span></div>
+            </article>
+            <article class="inspection-module">
+              <div class="inspection-module-top"><span class="inspection-module-icon">05</span><h4>维护窗口与 SLA</h4></div>
+              <p>按全局、组织、项目、环境或集群创建单次、每日、每周、每月维护窗口。窗口内仍记录异常和证据，但不产生高风险通知、不扣减健康分。SLA 每分钟检查一次，同一问题同一事件只提醒一次，通知结果写入审计。</p>
+              <div class="chip-row"><span>紧急 / 高 / 中 / 低</span><span>到期提醒</span><span>逾期筛选</span><span>未指派</span></div>
+            </article>
+            <article class="inspection-module">
+              <div class="inspection-module-top"><span class="inspection-module-icon">06</span><h4>报告与通知审计</h4></div>
+              <p>7 / 30 / 90 天报告汇总巡检批次、资源检查、活跃与恢复问题，展示 MTTA、MTTR、SLA 达成率、重开率、误报率、抑制率和自动化价值。</p>
+              <div class="chip-row"><span>故障簇 Top 10</span><span>CSV 明细</span><span>摘要发送</span><span>钉钉 / 飞书 / 企业微信 / 邮件</span><span>通知日志</span></div>
+            </article>
+          </div>
+
+          <div class="inspection-coverage-band">
+            <div class="inspection-coverage-intro">
+              <span class="tag blue">Built-in coverage</span>
+              <h4>主机与 Kubernetes 原生巡检覆盖</h4>
+              <p>巡检结果保留资源类型、集群、Namespace、对象名称和稳定身份；权限不足、API 失败或指标过期会显式标记为未知或覆盖不完整，不按健康处理。</p>
+            </div>
+            <div class="inspection-coverage-groups">
+              <div class="inspection-coverage-group"><strong>主机与 Agent</strong><div><span>CPU 使用率</span><span>内存使用率</span><span>磁盘使用率</span><span>磁盘 I/O</span><span>网络错误 / 丢包</span><span>Load per core</span><span>Uptime</span><span>指标新鲜度</span><span>Agent 离线</span></div></div>
+              <div class="inspection-coverage-group"><strong>Kubernetes</strong><div><span>Node Ready / Pressure / Unschedulable</span><span>Deployment / StatefulSet / DaemonSet 就绪与滚动</span><span>Pod Pending / CrashLoop / ImagePull</span><span>Pod 重启 / 未就绪 / 容器等待</span><span>Job 失败 / CronJob 暂停</span><span>Warning Event</span><span>集群连接</span><span>API / RBAC 覆盖边界</span></div></div>
             </div>
           </div>
         </div>
@@ -1539,7 +1720,7 @@
             <div class="collab-copy"><span class="tag violet">AI Workspace</span><h3>回答要有根据，行动要留痕。</h3><p>模型连接 OpenAI-Compatible 接口；未配置或调用失败时回退到本地规则回答。知识库当前以关键词召回注入上下文，敏感凭据不会进入模型上下文。</p></div>
             <div class="collab-visual">
               <div class="chat-window">
-                <div class="chat-head"><span class="chat-avatar">AI</span><strong>AiOps 资源助手</strong><span>基于当前权限范围</span></div>
+                <div class="chat-head"><span class="chat-avatar">AI</span><strong>ADP 资源助手</strong><span>基于当前权限范围</span></div>
                 <div class="chat-body">
                   <div class="bubble user">生产环境哪些 Pod 最近 30 分钟重启最多？</div>
                   <div class="bubble assistant"><strong>观察事实</strong>trade-prod 中 order-service 的 Pod 在最近 30 分钟出现 2 次重启，事件与探针失败相关。<em>→ 建议先执行只读 Pod 事件与日志诊断</em></div>
@@ -1655,7 +1836,7 @@
       <div class="container">
         <div class="cta-panel reveal">
           <div><h2>把运维经验沉淀成可执行的动作，<br />把执行留在边界之内。</h2><p>从资源可见性开始，逐步建立巡检、评估、审批和验证的闭环能力。</p></div>
-          <div class="cta-actions"><a class="button button-ghost-light button-large" href="../README.md">查看项目文档</a><a class="button button-primary button-large" href="mailto:macro_lai@163.com">联系产品团队</a></div>
+          <div class="cta-actions"><a class="button button-primary button-large" href="mailto:macro_lai@163.com">联系产品团队</a></div>
         </div>
       </div>
     </section>
@@ -1665,14 +1846,14 @@
     <div class="container">
       <div class="footer-main">
         <div class="footer-brand">
-          <a class="brand" href="#top" aria-label="返回 AiOps 首页"><span class="brand-mark" aria-hidden="true"></span><span class="brand-word">AiOps</span><span class="brand-note">智能运维平台</span></a>
+          <a class="brand" href="#top" aria-label="返回 ADP 首页"><span class="brand-mark" aria-hidden="true"></span><span class="brand-word">ADP</span><span class="brand-note">数智化研发运维平台</span></a>
           <p>面向云上与私有化机房的轻量 CMDB、巡检中心、Kubernetes 工作区与 AI 受控操作平台。</p>
         </div>
         <div class="footer-group"><strong>产品</strong><a href="#resources">资产与接入</a><a href="#kubernetes">Kubernetes</a><a href="#inspection">智能巡检</a><a href="#operations">受控操作</a></div>
         <div class="footer-group"><strong>治理</strong><a href="#governance">多租户权限</a><a href="#architecture">平台架构</a><a href="#status">当前能力</a><a href="#contact">部署方案</a></div>
-        <div class="footer-group"><strong>联系</strong><a href="mailto:macro_lai@163.com">产品咨询</a><a href="mailto:macro_lai@163.com">技术支持</a><a href="../README.md">开发文档</a><a href="#top">返回顶部</a></div>
+        <div class="footer-group"><strong>联系</strong><a href="mailto:macro_lai@163.com">产品咨询</a><a href="mailto:macro_lai@163.com">技术支持</a><a href="#top">返回顶部</a></div>
       </div>
-      <div class="footer-bottom"><span>© 2026 AiOps. 产品介绍页 · 单文件 HTML · 无外部资源依赖</span><span>自托管 · 可审计 · 资源范围优先</span></div>
+      <div class="footer-bottom"><span>© 2026 ADP. 产品介绍页 · 单文件 HTML · 无外部资源依赖</span><span>自托管 · 可审计 · 资源范围优先</span></div>
     </div>
   </footer>
 
@@ -1734,6 +1915,25 @@
           if (event.key === 'Escape') closeMenu();
         });
       }
+
+      const revealTargetSection = (target) => {
+        if (!target) return;
+        document.documentElement.classList.add('anchor-jump');
+        target.querySelectorAll('.reveal').forEach((item) => item.classList.add('visible'));
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          document.documentElement.classList.remove('anchor-jump');
+        }));
+      };
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', () => {
+          const hash = link.getAttribute('href');
+          if (!hash || hash === '#') return;
+          revealTargetSection(document.getElementById(hash.slice(1)));
+        });
+      });
+      if (window.location.hash) revealTargetSection(document.getElementById(window.location.hash.slice(1)));
+      window.addEventListener('hashchange', () => revealTargetSection(document.getElementById(window.location.hash.slice(1))));
 
       const revealItems = document.querySelectorAll('.reveal');
       if (reduceMotion || !('IntersectionObserver' in window)) {
